@@ -30,8 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,11 +48,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ABCLogistics.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ABCLogistics.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ABCLogistics.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ABCLogistics.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ABCLogistics.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ABCLogistics.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Branch.cs">
+      <DependentUpon>ABCLogistics.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Parcel.cs">
+      <DependentUpon>ABCLogistics.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAO\" />
     <Folder Include="IDAO\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="ABCLogistics.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ABCLogistics.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ABCLogistics.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ABCLogistics.edmx</DependentUpon>
+      <LastGenOutput>ABCLogistics.Context.cs</LastGenOutput>
+    </None>
+    <None Include="ABCLogistics.edmx.diagram">
+      <DependentUpon>ABCLogistics.edmx</DependentUpon>
+    </None>
+    <None Include="ABCLogistics.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ABCLogistics.edmx</DependentUpon>
+      <LastGenOutput>ABCLogistics.cs</LastGenOutput>
+    </None>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
