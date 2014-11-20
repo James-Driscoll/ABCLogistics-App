@@ -10,20 +10,20 @@ namespace ABCLogistics.Data.DAO
     public class OrderDAO : IOrderDAO
     {
        
-        private db_ABCLogisticsEntities _context;
+        private db_ABCLogisticsEntities2 _context;
         
         public OrderDAO()
         {
-            _context = new db_ABCLogisticsEntities();
+            _context = new db_ABCLogisticsEntities2();
         }
 
-        public IList<Branch> getOrderBranches()
+        public IList<Order_Branch> getOrderBranches()
         {
-            IQueryable<Branch> _branches;
+            IQueryable<Order_Branch> _branches;
             _branches = from branch
-                        in _context.Branch
+                        in _context.Order_Branch
                         select branch;
-            return _branches.ToList<Branch>();
+            return _branches.ToList<Order_Branch>();
         }
 
     }
