@@ -237,6 +237,16 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ABCLogistics.Data\ABCLogistics.Data.csproj">
+      <Project>{a73403d9-f11a-44c9-ad6a-8280192f0636}</Project>
+      <Name>ABCLogistics.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ABCLogistics.Services\ABCLogistics.Services.csproj">
+      <Project>{ad9d8b84-28b1-4b10-a1c3-9b337782cb08}</Project>
+      <Name>ABCLogistics.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
