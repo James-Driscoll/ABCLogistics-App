@@ -19,7 +19,7 @@ namespace ABCLogistics.Services.Service
             _orderDAO = new OrderDAO();
         }
 
-        public IList<Branch> getOrderBranches()
+        public IList<Order_Branch> getOrderBranches()
         {
             return _orderDAO.getOrderBranches();
         }

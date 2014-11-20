@@ -9,6 +9,6 @@ namespace ABCLogistics.Services.IService
 {
     interface IOrderService
     {
-        IList<Branch> getOrderBranch();
+        IList<Order_Branch> getOrderBranch();
     }
 }
