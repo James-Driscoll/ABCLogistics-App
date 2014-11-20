@@ -8,6 +8,6 @@ namespace ABCLogistics.Data.IDAO
 {
     interface IOrderDAO
     {
-        IList<Parcel> getOrderBranches();
+        IList<Branch> getOrderBranches();
     }
 }

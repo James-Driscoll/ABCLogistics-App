@@ -66,15 +66,14 @@
     <Compile Include="Branch.cs">
       <DependentUpon>ABCLogistics.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAO\OrderDAO.cs" />
     <Compile Include="IDAO\IOrderDAO.cs" />
     <Compile Include="Parcel.cs">
       <DependentUpon>ABCLogistics.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAO\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EntityDeploy Include="ABCLogistics.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
