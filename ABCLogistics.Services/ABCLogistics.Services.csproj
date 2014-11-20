@@ -41,10 +41,9 @@
   <ItemGroup>
     <Compile Include="IService\IOrderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\OrderService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Service\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ABCLogistics.Data\ABCLogistics.Data.csproj">
       <Project>{a73403d9-f11a-44c9-ad6a-8280192f0636}</Project>

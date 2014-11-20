@@ -21,7 +21,7 @@ namespace ABCLogistics.Data.DAO
         {
             IQueryable<Branch> _branches;
             _branches = from branch
-                        in _context.Branches
+                        in _context.Branch
                         select branch;
             return _branches.ToList<Branch>();
         }

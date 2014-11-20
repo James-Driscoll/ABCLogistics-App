@@ -5,7 +5,7 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="db_ABCLogisticsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Branch">
+        <EntityType Name="Order_Branch">
           <Key>
             <PropertyRef Name="PK_BranchID" />
           </Key>
@@ -19,7 +19,7 @@
           <Property Name="TelephoneNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="FaxNumber" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Parcel">
+        <EntityType Name="Order_Parcel">
           <Key>
             <PropertyRef Name="PK_ParcelID" />
           </Key>
@@ -41,15 +41,15 @@
           <Property Name="BranchName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="db_ABCLogisticsModelStoreContainer">
-          <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Parcel" EntityType="Self.Parcel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order_Branch" EntityType="Self.Order_Branch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order_Parcel" EntityType="Self.Order_Parcel" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="db_ABCLogisticsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Branch">
+        <EntityType Name="Order_Branch">
           <Key>
             <PropertyRef Name="PK_BranchID" />
           </Key>
@@ -63,7 +63,7 @@
           <Property Name="TelephoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Parcel">
+        <EntityType Name="Order_Parcel">
           <Key>
             <PropertyRef Name="PK_ParcelID" />
           </Key>
@@ -84,19 +84,19 @@
           <Property Name="FK_BranchID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="BranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="db_ABCLogisticsEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Branches" EntityType="Self.Branch" />
-          <EntitySet Name="Parcels" EntityType="Self.Parcel" />
+        <EntityContainer Name="db_ABCLogisticsEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Order_Branch" EntityType="Self.Order_Branch" />
+          <EntitySet Name="Order_Parcel" EntityType="Self.Order_Parcel" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="db_ABCLogisticsModelStoreContainer" CdmEntityContainer="db_ABCLogisticsEntities">
-          <EntitySetMapping Name="Branches">
-            <EntityTypeMapping TypeName="db_ABCLogisticsModel.Branch">
-              <MappingFragment StoreEntitySet="Branch">
+        <EntityContainerMapping StorageEntityContainer="db_ABCLogisticsModelStoreContainer" CdmEntityContainer="db_ABCLogisticsEntities2">
+          <EntitySetMapping Name="Order_Branch">
+            <EntityTypeMapping TypeName="db_ABCLogisticsModel.Order_Branch">
+              <MappingFragment StoreEntitySet="Order_Branch">
                 <ScalarProperty Name="PK_BranchID" ColumnName="PK_BranchID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="StreetNumber" ColumnName="StreetNumber" />
@@ -109,9 +109,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Parcels">
-            <EntityTypeMapping TypeName="db_ABCLogisticsModel.Parcel">
-              <MappingFragment StoreEntitySet="Parcel">
+          <EntitySetMapping Name="Order_Parcel">
+            <EntityTypeMapping TypeName="db_ABCLogisticsModel.Order_Parcel">
+              <MappingFragment StoreEntitySet="Order_Parcel">
                 <ScalarProperty Name="PK_ParcelID" ColumnName="PK_ParcelID" />
                 <ScalarProperty Name="FK_CustomerID" ColumnName="FK_CustomerID" />
                 <ScalarProperty Name="CustomerLastname" ColumnName="CustomerLastname" />

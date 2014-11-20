@@ -13,10 +13,10 @@ namespace ABCLogistics.Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class db_ABCLogisticsEntities : DbContext
+    public partial class db_ABCLogisticsEntities2 : DbContext
     {
-        public db_ABCLogisticsEntities()
-            : base("name=db_ABCLogisticsEntities")
+        public db_ABCLogisticsEntities2()
+            : base("name=db_ABCLogisticsEntities2")
         {
         }
     
@@ -25,7 +25,7 @@ namespace ABCLogistics.Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Branch> Branches { get; set; }
-        public virtual DbSet<Parcel> Parcels { get; set; }
+        public virtual DbSet<Order_Branch> Order_Branch { get; set; }
+        public virtual DbSet<Order_Parcel> Order_Parcel { get; set; }
     }
 }

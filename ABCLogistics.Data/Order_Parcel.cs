@@ -12,7 +12,7 @@ namespace ABCLogistics.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Parcel
+    public partial class Order_Parcel
     {
         public string PK_ParcelID { get; set; }
         public string FK_CustomerID { get; set; }

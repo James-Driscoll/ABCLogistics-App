@@ -12,7 +12,7 @@ namespace ABCLogistics.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Branch
+    public partial class Order_Branch
     {
         public string PK_BranchID { get; set; }
         public string Name { get; set; }
