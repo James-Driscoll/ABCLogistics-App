@@ -25,6 +25,12 @@ namespace ABCLogistics.Controllers
             return View(_orderService.getOrderBranches());
         }
 
+        // GET: Order Parcels
+        public ActionResult Parcels(string BranchName)
+        {
+            return View(_orderService.getOrderParcels(BranchName));
+        }
+
         // GET: Order/Details/5
         public ActionResult Details(int id)
         {
