@@ -11,7 +11,7 @@ namespace ABCLogistics.Services.Service
 {
     public class OrderService : IOrderService
     {
-        
+
         private OrderDAO _orderDAO;
         
         public OrderService()
