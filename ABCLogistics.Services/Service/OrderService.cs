@@ -24,6 +24,11 @@ namespace ABCLogistics.Services.Service
             return _orderDAO.getOrderBranches();
         }
 
+        public IList<Order_Parcel> getOrderParcels(string BranchName)
+        {
+            return _orderDAO.getOrderParcels(BranchName);
+        }
+
     }
 
 }
