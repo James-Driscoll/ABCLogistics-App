@@ -10,5 +10,6 @@ namespace ABCLogistics.Services.IService
     interface IOrderService
     {
         IList<Order_Branch> getOrderBranches();
+        IList<Order_Parcel> getOrderParcels(string BranchName);
     }
 }
