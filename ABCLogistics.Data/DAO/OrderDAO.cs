@@ -31,6 +31,7 @@ namespace ABCLogistics.Data.DAO
             IQueryable<Order_Parcel> _parcels;
             _parcels = from parcel
                        in _context.Order_Parcel
+                       where parcel.BranchName == BranchName
                        select parcel;
             return _parcels.ToList<Order_Parcel>();
         }
