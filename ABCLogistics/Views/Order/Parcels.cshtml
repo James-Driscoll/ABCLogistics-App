@@ -1,0 +1,117 @@
+﻿@model IEnumerable<ABCLogistics.Data.Order_Parcel>
+
+@{
+    ViewBag.Title = "Parcels";
+}
+
+<h2>Parcels</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_CustomerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerLastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_DeliveryAddressID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerTown)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerPostcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerTelephoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_OrderID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOrdered)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateShipped)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateDispatched)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpectedDeliveryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateDelivered)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_BranchID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BranchName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FK_CustomerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerLastname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FK_DeliveryAddressID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerTown)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerPostcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerTelephoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FK_OrderID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOrdered)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateShipped)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateDispatched)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpectedDeliveryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateDelivered)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FK_BranchID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BranchName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PK_ParcelID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PK_ParcelID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PK_ParcelID })
+        </td>
+    </tr>
+}
+
+</table>
