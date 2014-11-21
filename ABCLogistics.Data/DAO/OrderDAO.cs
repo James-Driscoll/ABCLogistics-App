@@ -26,7 +26,7 @@ namespace ABCLogistics.Data.DAO
             return _branches.ToList<Order_Branch>();
         }
 
-        public IList<Order_Parcel> getOrderParcels()
+        public IList<Order_Parcel> getOrderParcels(string BranchName)
         {
             IQueryable<Order_Parcel> _parcels;
             _parcels = from parcel
