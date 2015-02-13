@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ABCLogisticsDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="PK_AddressID" />
+          </Key>
+          <Property Name="PK_AddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Street" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Town" Type="nvarchar(max)" />
+          <Property Name="County" Type="nvarchar(max)" />
+          <Property Name="Postcode" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="PK_ItemID" />
+          </Key>
+          <Property Name="PK_ItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Weight" Type="int" />
+          <Property Name="SizeCategory" Type="nchar" MaxLength="10" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsuranceType" Type="nchar" MaxLength="10" />
+          <Property Name="RecordedDelivery" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="PK_OrderID" />
+          </Key>
+          <Property Name="PK_OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_ItemID" Type="int" Nullable="false" />
+          <Property Name="FK_CustomerID" Type="int" Nullable="false" />
+          <Property Name="FK_BranchAddressID" Type="int" Nullable="false" />
+          <Property Name="FK_DeliveryAddressID" Type="int" Nullable="false" />
+          <Property Name="DateOrdered" Type="date" Nullable="false" />
+          <Property Name="DateDelivered" Type="date" />
+          <Property Name="Status" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Tracking">
+          <Key>
+            <PropertyRef Name="PK_TrackingID" />
+          </Key>
+          <Property Name="PK_TrackingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_OrderID" Type="int" Nullable="false" />
+          <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="PK_UserID" />
+          </Key>
+          <Property Name="PK_UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_BillingAddressID" Type="int" />
+          <Property Name="FK_DeliveryAddressID" Type="int" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="Lastname" Type="nvarchar(max)" />
+          <Property Name="MobileNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="LandlineNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar(max)" />
+          <Property Name="SystemRole" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="C_BranchAddress">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="PK_AddressID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="FK_BranchAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_Customer">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="PK_UserID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="FK_CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_DeliveryAddress">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="PK_AddressID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="FK_DeliveryAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="PK_ItemID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="FK_ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Tracking" Type="Self.Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="PK_OrderID" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="FK_OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_UserBillingAddress">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="PK_AddressID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="FK_BillingAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_UserDeliveryAddress">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="PK_AddressID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="FK_DeliveryAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ABCLogisticsDataModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tracking" EntityType="Self.Tracking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="C_BranchAddress" Association="Self.C_BranchAddress">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="C_Customer" Association="Self.C_Customer">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="C_DeliveryAddress" Association="Self.C_DeliveryAddress">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="C_Item" Association="Self.C_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="C_Order" Association="Self.C_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Tracking" EntitySet="Tracking" />
+          </AssociationSet>
+          <AssociationSet Name="C_UserBillingAddress" Association="Self.C_UserBillingAddress">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="C_UserDeliveryAddress" Association="Self.C_UserDeliveryAddress">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ABCLogisticsDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="PK_AddressID" />
+          </Key>
+          <Property Name="PK_AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Street" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Town" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="County" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Postcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.C_BranchAddress" FromRole="Address" ToRole="Order" />
+          <NavigationProperty Name="Orders1" Relationship="Self.C_DeliveryAddress" FromRole="Address" ToRole="Order" />
+          <NavigationProperty Name="Users" Relationship="Self.C_UserBillingAddress" FromRole="Address" ToRole="User" />
+          <NavigationProperty Name="Users1" Relationship="Self.C_UserDeliveryAddress" FromRole="Address" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="PK_ItemID" />
+          </Key>
+          <Property Name="PK_ItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Weight" Type="Int32" />
+          <Property Name="SizeCategory" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsuranceType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="RecordedDelivery" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="Self.C_Item" FromRole="Item" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="PK_OrderID" />
+          </Key>
+          <Property Name="PK_OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_ItemID" Type="Int32" Nullable="false" />
+          <Property Name="FK_CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="FK_BranchAddressID" Type="Int32" Nullable="false" />
+          <Property Name="FK_DeliveryAddressID" Type="Int32" Nullable="false" />
+          <Property Name="DateOrdered" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateDelivered" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Address" Relationship="Self.C_BranchAddress" FromRole="Order" ToRole="Address" />
+          <NavigationProperty Name="Address1" Relationship="Self.C_DeliveryAddress" FromRole="Order" ToRole="Address" />
+          <NavigationProperty Name="Item" Relationship="Self.C_Item" FromRole="Order" ToRole="Item" />
+          <NavigationProperty Name="User" Relationship="Self.C_Customer" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="Trackings" Relationship="Self.C_Order" FromRole="Order" ToRole="Tracking" />
+        </EntityType>
+        <EntityType Name="Tracking">
+          <Key>
+            <PropertyRef Name="PK_TrackingID" />
+          </Key>
+          <Property Name="PK_TrackingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_OrderID" Type="Int32" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.C_Order" FromRole="Tracking" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="PK_UserID" />
+          </Key>
+          <Property Name="PK_UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_BillingAddressID" Type="Int32" />
+          <Property Name="FK_DeliveryAddressID" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Lastname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LandlineNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SystemRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Address" Relationship="Self.C_UserBillingAddress" FromRole="User" ToRole="Address" />
+          <NavigationProperty Name="Address1" Relationship="Self.C_UserDeliveryAddress" FromRole="User" ToRole="Address" />
+          <NavigationProperty Name="Orders" Relationship="Self.C_Customer" FromRole="User" ToRole="Order" />
+        </EntityType>
+        <Association Name="C_BranchAddress">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="PK_AddressID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="FK_BranchAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_DeliveryAddress">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="PK_AddressID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="FK_DeliveryAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_UserBillingAddress">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="PK_AddressID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="FK_BillingAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_UserDeliveryAddress">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="PK_AddressID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="FK_DeliveryAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="PK_ItemID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="FK_ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_Customer">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="PK_UserID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="FK_CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Tracking" Type="Self.Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="PK_OrderID" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="FK_OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ABCLogisticsDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="Self.Address" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Trackings" EntityType="Self.Tracking" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="C_BranchAddress" Association="Self.C_BranchAddress">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="C_DeliveryAddress" Association="Self.C_DeliveryAddress">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="C_UserBillingAddress" Association="Self.C_UserBillingAddress">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="C_UserDeliveryAddress" Association="Self.C_UserDeliveryAddress">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="C_Item" Association="Self.C_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="C_Customer" Association="Self.C_Customer">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="C_Order" Association="Self.C_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Tracking" EntitySet="Trackings" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ABCLogisticsDataModelStoreContainer" CdmEntityContainer="ABCLogisticsDataEntities">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="ABCLogisticsDataModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="PK_AddressID" ColumnName="PK_AddressID" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="ABCLogisticsDataModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="PK_ItemID" ColumnName="PK_ItemID" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="SizeCategory" ColumnName="SizeCategory" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="InsuranceType" ColumnName="InsuranceType" />
+                <ScalarProperty Name="RecordedDelivery" ColumnName="RecordedDelivery" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="ABCLogisticsDataModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="PK_OrderID" ColumnName="PK_OrderID" />
+                <ScalarProperty Name="FK_ItemID" ColumnName="FK_ItemID" />
+                <ScalarProperty Name="FK_CustomerID" ColumnName="FK_CustomerID" />
+                <ScalarProperty Name="FK_BranchAddressID" ColumnName="FK_BranchAddressID" />
+                <ScalarProperty Name="FK_DeliveryAddressID" ColumnName="FK_DeliveryAddressID" />
+                <ScalarProperty Name="DateOrdered" ColumnName="DateOrdered" />
+                <ScalarProperty Name="DateDelivered" ColumnName="DateDelivered" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trackings">
+            <EntityTypeMapping TypeName="ABCLogisticsDataModel.Tracking">
+              <MappingFragment StoreEntitySet="Tracking">
+                <ScalarProperty Name="PK_TrackingID" ColumnName="PK_TrackingID" />
+                <ScalarProperty Name="FK_OrderID" ColumnName="FK_OrderID" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ABCLogisticsDataModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="PK_UserID" ColumnName="PK_UserID" />
+                <ScalarProperty Name="FK_BillingAddressID" ColumnName="FK_BillingAddressID" />
+                <ScalarProperty Name="FK_DeliveryAddressID" ColumnName="FK_DeliveryAddressID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="LandlineNumber" ColumnName="LandlineNumber" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="SystemRole" ColumnName="SystemRole" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

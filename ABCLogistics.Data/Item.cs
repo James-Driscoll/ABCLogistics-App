@@ -12,16 +12,20 @@ namespace ABCLogistics.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Order_Branch
+    public partial class Item
     {
-        public string PK_BranchID { get; set; }
-        public string Name { get; set; }
-        public string StreetNumber { get; set; }
-        public string StreetName { get; set; }
-        public string Town { get; set; }
-        public string County { get; set; }
-        public string Postcode { get; set; }
-        public string TelephoneNumber { get; set; }
-        public string FaxNumber { get; set; }
+        public Item()
+        {
+            this.Orders = new HashSet<Order>();
+        }
+    
+        public int PK_ItemID { get; set; }
+        public Nullable<int> Weight { get; set; }
+        public string SizeCategory { get; set; }
+        public string Type { get; set; }
+        public string InsuranceType { get; set; }
+        public string RecordedDelivery { get; set; }
+    
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
