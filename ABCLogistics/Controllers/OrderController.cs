@@ -12,46 +12,87 @@ namespace ABCLogistics.Controllers
     public class OrderController : Controller
     {
 
+        // Create local item service
+        private ItemService _itemService;
+
+        // Create local order service.
         private OrderService _orderService;
+
+        // Create a local tracking service.
+        private TrackingService _trackingService;
 
         public OrderController()
         {
+            _itemService = new ItemService();
             _orderService = new OrderService();
+            _trackingService = new TrackingService();
         }
 
-        // GET: Order
-        public ActionResult Branches()
-        {
-            return View(_orderService.getOrderBranches());
-        }
-
-        // GET: Order Parcels
-        public ActionResult Parcels(string BranchName)
-        {
-            return View(_orderService.getOrderParcels(BranchName));
-        }
-
-        // GET: Order/Details/5
-        public ActionResult Details(int id)
+        // CREATE ===================================================================
+        // addItem
+        [HttpGet]
+        public ActionResult addItem()
         {
             return View();
         }
 
-        // GET: Order/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Order/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult addItem(Item item)
+        {
+            View();
+            _itemService.addItem(item);
+            return RedirectToAction("getItems", "Customer");
+        }
+
+        // addTracking
+        [HttpGet]
+        public ActionResult addTracking(int FK_OrderID)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult addTracking(Tracking tracking)
+        {
+            View();
+            _trackingService.addTracking(tracking);
+            return RedirectToAction("getOrders", "Customer");
+        }
+
+        // addOrder
+        [HttpGet]
+        public ActionResult addOrder()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult addOrder(Order order)
+        {
+            View();
+            _orderService.addOrder(order);
+            return RedirectToAction("getOrders", "Customer");
+        }
+
+        // READ =====================================================================
+
+
+        // UPDATE ===================================================================
+        // editItem
+        [HttpGet]
+        public ActionResult editItem(int id)
+        {
+            Item record = _itemService.getItem(id);
+            return View(record);
+        }
+
+        [HttpPost]
+        public ActionResult editItem(Item item)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                _itemService.editItem(item);
+                return RedirectToAction("getItems", "Customer");
             }
             catch
             {
@@ -59,21 +100,21 @@ namespace ABCLogistics.Controllers
             }
         }
 
-        // GET: Order/Edit/5
-        public ActionResult Edit(int id)
+        // editTracking
+        [HttpGet]
+        public ActionResult editTracking(int id)
         {
-            return View();
+            Tracking record = _trackingService.getTracking(id);
+            return View(record);
         }
 
-        // POST: Order/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult editTracking(Tracking tracking)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                _trackingService.editTracking(tracking);
+                return RedirectToAction("getTrackings", "Customer");
             }
             catch
             {
@@ -81,26 +122,97 @@ namespace ABCLogistics.Controllers
             }
         }
 
-        // GET: Order/Delete/5
-        public ActionResult Delete(int id)
+        // editOrder
+        [HttpGet]
+        public ActionResult editOrder(int id)
         {
-            return View();
+            Order order = _orderService.getOrder(id);
+            return View(order);
         }
 
-        // POST: Order/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult editOrder(Order order)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                _orderService.editOrder(order);
+                return RedirectToAction("getOrders", "Customer");
             }
             catch
             {
                 return View();
             }
         }
+
+        // DELETE ===================================================================
+        // deleteItem
+        [HttpGet]
+        public ActionResult deleteItem(int id)
+        {
+            Item item = _itemService.getItem(id);
+            return View(item);
+        }
+
+        [HttpPost]
+        public ActionResult deleteItem(Item item, int id)
+        {
+            try
+            {
+                Item _item = _itemService.getItem(id);
+                _itemService.deleteItem(_item);
+                return RedirectToAction("getItems", "Customer");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // deleteTracking
+        [HttpGet]
+        public ActionResult deleteTracking(int id)
+        {
+            Tracking tracking = _trackingService.getTracking(id);
+            return View(tracking);
+        }
+
+        [HttpPost]
+        public ActionResult deleteTracking(Tracking tracking, int id)
+        {
+            try
+            {
+                Tracking _tracking = _trackingService.getTracking(id);
+                _trackingService.deleteTracking(_tracking);
+                return RedirectToAction("getTrackings", "Customer");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // deleteOrder
+        [HttpGet]
+        public ActionResult deleteOrder(int id)
+        {
+            Order order = _orderService.getOrder(id);
+            return View(order);
+        }
+
+        [HttpPost]
+        public ActionResult deleteOrder(Order order, int id)
+        {
+            try
+            {
+                Order _order = _orderService.getOrder(id);
+                _orderService.deleteOrder(_order);
+                return RedirectToAction("getOrders", "Customer");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
     }
 }
