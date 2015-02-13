@@ -42,6 +42,7 @@
     <Compile Include="IService\IOrderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AddressService.cs" />
+    <Compile Include="Service\ItemService.cs" />
     <Compile Include="Service\OrderService.cs" />
   </ItemGroup>
   <ItemGroup />
