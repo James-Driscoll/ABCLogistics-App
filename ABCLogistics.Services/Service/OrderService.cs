@@ -9,24 +9,49 @@ using ABCLogistics.Data.DAO;
 
 namespace ABCLogistics.Services.Service
 {
+
     public class OrderService : IOrderService
     {
 
-        private OrderDAO _orderDAO;
-        
+        private OrderDAO _OrderDAO;
+
         public OrderService()
         {
-            _orderDAO = new OrderDAO();
+            _OrderDAO = new OrderDAO();
         }
 
-        public IList<Order_Branch> getOrderBranches()
+        // CREATE ===================================================================
+        // addOrder
+        public void addOrder(Order order)
         {
-            return _orderDAO.getOrderBranches();
+            _OrderDAO.addOrder(order);
         }
 
-        public IList<Order_Parcel> getOrderParcels(string BranchName)
+        // READ =====================================================================
+        // getOrders
+        public IList<Order> getOrders()
         {
-            return _orderDAO.getOrderParcels(BranchName);
+            return _OrderDAO.getOrders();
+        }
+
+        // getOrder
+        public Order getOrder(int id)
+        {
+            return _OrderDAO.getOrder(id);
+        }
+
+        // UPDATE ===================================================================
+        // editOrder
+        public void editOrder(Order order)
+        {
+            _OrderDAO.editOrder(order);
+        }
+
+        // DELETE ===================================================================
+        // deleteOrder
+        public void deleteOrder(Order order)
+        {
+            _OrderDAO.deleteOrder(order);
         }
 
     }
