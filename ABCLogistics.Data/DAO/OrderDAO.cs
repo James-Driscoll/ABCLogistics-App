@@ -7,35 +7,72 @@ using ABCLogistics.Data.IDAO;
 
 namespace ABCLogistics.Data.DAO
 {
+
     public class OrderDAO : IOrderDAO
     {
-       
-        private db_ABCLogisticsEntities2 _context;
-        
+
+        private ABCLogisticsDataEntities _context;
+
         public OrderDAO()
         {
-            _context = new db_ABCLogisticsEntities2();
+            _context = new ABCLogisticsDataEntities();
         }
 
-        public IList<Order_Branch> getOrderBranches()
+        // CREATE ====================================================================
+        // addOrder
+        public void addOrder(Order order)
         {
-            IQueryable<Order_Branch> _branches;
-            _branches = from branch
-                        in _context.Order_Branch
-                        select branch;
-            return _branches.ToList<Order_Branch>();
+            _context.Orders.Add(order);
+            _context.SaveChanges();
         }
 
-        public IList<Order_Parcel> getOrderParcels(string BranchName)
+        // READ ======================================================================
+        // getOrders
+        public IList<Order> getOrders()
         {
-            IQueryable<Order_Parcel> _parcels;
-            _parcels = from parcel
-                       in _context.Order_Parcel
-                       where parcel.BranchName == BranchName
-                       select parcel;
-            return _parcels.ToList<Order_Parcel>();
+            IQueryable<Order> _orders;
+            _orders = from order
+                     in _context.Orders
+                      select order;
+            return _orders.ToList<Order>();
+        }
+
+        // getOrder
+        public Order getOrder(int id)
+        {
+            IQueryable<Order> _order;
+            _order = from order
+                     in _context.Orders
+                     where order.PK_OrderID == id
+                     select order;
+            return _order.ToList<Order>().First();
+        }
+
+
+        // UPDATE ====================================================================
+        // editOrder
+        public void editOrder(Order order)
+        {
+            Order record = (from rec
+                              in _context.Orders
+                            where rec.PK_OrderID == order.PK_OrderID
+                            select rec).ToList<Order>().First();
+            record.DateDelivered = order.DateDelivered;
+            record.DateOrdered = order.DateOrdered;
+            record.FK_BranchAddressID = order.FK_BranchAddressID;
+            record.FK_CustomerID = order.FK_CustomerID;
+            record.FK_DeliveryAddressID = order.FK_DeliveryAddressID;
+            record.FK_ItemID = order.FK_ItemID;
+            _context.SaveChanges();
+        }
+
+        // DELETE ====================================================================
+        // deleteOrder
+        public void deleteOrder(Order order)
+        {
+            _context.Orders.Remove(order);
+            _context.SaveChanges();
         }
 
     }
-
 }
