@@ -75,6 +75,7 @@
     <Compile Include="IDAO\IItemDAO.cs" />
     <Compile Include="IDAO\IOrderDAO.cs" />
     <Compile Include="IDAO\ITrackingDAO.cs" />
+    <Compile Include="IDAO\IUserDAO.cs" />
     <Compile Include="Item.cs">
       <DependentUpon>ABCLogisticsModel.tt</DependentUpon>
     </Compile>
