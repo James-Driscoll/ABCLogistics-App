@@ -45,6 +45,7 @@
     <Compile Include="Service\ItemService.cs" />
     <Compile Include="Service\OrderService.cs" />
     <Compile Include="Service\TrackingService.cs" />
+    <Compile Include="Service\UserService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
