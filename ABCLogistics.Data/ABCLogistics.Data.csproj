@@ -70,6 +70,7 @@
     <Compile Include="DAO\ItemDAO.cs" />
     <Compile Include="DAO\OrderDAO.cs" />
     <Compile Include="DAO\TrackingDAO.cs" />
+    <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="IDAO\IOrderDAO.cs" />
     <Compile Include="Item.cs">
       <DependentUpon>ABCLogisticsModel.tt</DependentUpon>
