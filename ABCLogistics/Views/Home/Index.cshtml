@@ -1,31 +1,128 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+<div class="jumbotron row">
+    <div class="container">
+        <h1>ABC Logistics - Assignment 3</h1>
+        <p class="lead">ABC Logistics is a final year assignment that is part of the Advanced Web Applications module. The application aims to demonstrate some of the core concepts of an MVC web application.</p>
     </div>
 </div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12 well text-center">
+            <h1>Orders</h1>
+            <p>This is the list of all stored orders.</p>
+            @Html.ActionLink("Orders", "getOrders", "Customer")
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <h2>Addresses</h2>
+            <p>List of all the stored addresses.</p>
+            @Html.ActionLink("Addresses", "getAddresses", "Customer")
+        </div>
+        <div class="col-md-3 text-center">
+            <h2>Items</h2>
+            <p>This is the list of all the stored items.</p>
+            @Html.ActionLink("Items", "getItems", "Customer")
+        </div>
+        <div class="col-md-3 text-center">
+            <h2>Users</h2>
+            <p>This is the list of all the stored users.</p>
+            @Html.ActionLink("Users", "getUsers", "Admin")
+        </div>
+        <div class="col-md-3 text-center">
+            <h2>Tracking</h2>
+            <p>This is the list of all the stored trackings.</p>
+            @Html.ActionLink("Trackings", "getTrackings", "Customer")
+        </div>
+    </div>
+
+    <div class="row">
+        <h3>Web Services</h3>
+        <ul>
+            <li>Add Order: <strong>http://webteach_net.hallam.shu.ac.uk/b1015297/ABCLogisticsWebService.asmx?op=addABCOrder</strong></li>
+            <li>Add Order Tracking: <strong>http://webteach_net.hallam.shu.ac.uk/b1015297/ABCLogisticsWebService.asmx?op=addABCOrderTracking</strong></li>
+            <li>Get Order Tracking: <strong>http://webteach_net.hallam.shu.ac.uk/b1015297/ABCLogisticsWebService.asmx?op=getABCOrderTracking</strong></li>
+            <li>All: <strong>http://webteach_net.hallam.shu.ac.uk/b1015297/ABCLogisticsWebService.asmx</strong></li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <h3>User Instructions</h3>
+        <p>ORDERS is the central table which uses foreign keys to link to other tables containing further record details. To add a new ORDER the linked records will need to exist in the ADDRESS, USER and ITEM tables.</p>
+    </div>
+
+    <div class="row">
+        <h3>Known Issues</h3>
+        <ul>
+            <li>When using a hyperlink in a list view (getOrders or getUsers) the site will fail if the record does not already exist.</li>
+            <li>Input validation for values of date datatypes is using the American date format.</li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <h3>Next Steps &amp; Improvements</h3>
+        <ul>
+            <li>One order can only contain one item. Ideally, one order should be able to contain many different items.</li>
+            <li>Currently there is no inheritance between the controllers. Ideally: Customer < --- Order < --- Admin</li>
+            <li>Currently a user can only have two addresses (delivery address and billing address). Ideally, more addresses should be available.</li>
+            <li>When creating a new Order, all of the foreign key fields should show drop dowm menus of available users, addresses or items.</li>
+        </ul>
+    </div>
+
+    <div class="row text-center">
+        <h3>Controller Actions Overview</h3>
+        <div class="col-md-4">
+            <h4>CustomerController</h4>
+            <ul class="list-group">
+                <li class="list-group-item">addAddress</li>
+                <li class="list-group-item">getAddresses</li>
+                <li class="list-group-item">getAddress</li>
+                <li class="list-group-item">editAddress</li>
+                <li class="list-group-item">deleteAddress</li>
+                <li class="list-group-item">getItem</li>
+                <li class="list-group-item">getItems</li>
+                <li class="list-group-item">getTrackings</li>
+                <li class="list-group-item">getTracking</li>
+                <li class="list-group-item">getOrder</li>
+                <li class="list-group-item">getOrders</li>
+                <li class="list-group-item">getUser</li>
+            </ul>
+        </div>
+
+        <div class="col-md-4">
+            <h4>OrderController</h4>
+            <ul class="list-group">
+                <li class="list-group-item">addItem</li>
+                <li class="list-group-item">editItem</li>
+                <li class="list-group-item">deleteItem</li>
+                <li class="list-group-item">addTracking</li>
+                <li class="list-group-item">editTracking</li>
+                <li class="list-group-item">deleteTracking</li>
+                <li class="list-group-item">addOrder</li>
+                <li class="list-group-item">editorders</li>
+                <li class="list-group-item">deleteOrders</li>
+                <li class="list-group-item">addUser</li>
+            </ul>
+        </div>
+
+        <div class="col-md-4">
+            <h4>AdminController</h4>
+            <ul class="list-group">
+                <li class="list-group-item">getUsers</li>
+                <li class="list-group-item">editUser</li>
+                <li class="list-group-item">deleteUser</li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+<div class="container">
