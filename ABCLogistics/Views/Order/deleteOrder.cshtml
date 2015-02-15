@@ -1,0 +1,72 @@
+﻿@model ABCLogistics.Data.Order
+
+@{
+    ViewBag.Title = "Remove Order";
+}
+
+<h2>Remove Order</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_ItemID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_ItemID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_CustomerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_CustomerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_BranchAddressID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_BranchAddressID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_DeliveryAddressID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_DeliveryAddressID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOrdered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOrdered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateDelivered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateDelivered)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "getOrders", "Customer")
+        </div>
+    }
+</div>
