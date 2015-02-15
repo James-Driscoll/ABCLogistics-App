@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ABCLogistics.Data.User>
+
+@{
+    ViewBag.Title = "getUsers";
+}
+
+<h2>getUsers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "addUser", "Admin")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_BillingAddressID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_DeliveryAddressID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LandlineNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SystemRole)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.FK_BillingAddressID.ToString(), "getAddress", new { controller = "Customer", id = item.FK_BillingAddressID })
+        </td>
+        <td>
+            @Html.ActionLink(item.FK_DeliveryAddressID.ToString(), "getAddress", new { controller = "Customer", id = item.FK_DeliveryAddressID })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lastname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MobileNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LandlineNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SystemRole)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "editUser", new { id=item.PK_UserID, controller = "Admin" }) |
+            @Html.ActionLink("Details", "getUser", new { id = item.PK_UserID, controller = "Customer" }) |
+            @Html.ActionLink("Delete", "deleteUser", new { id=item.PK_UserID, controller = "Admin"})
+        </td>
+    </tr>
+}
+
+</table>
