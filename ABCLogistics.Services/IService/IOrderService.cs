@@ -7,9 +7,29 @@ using ABCLogistics.Data;
 
 namespace ABCLogistics.Services.IService
 {
+
     interface IOrderService
     {
-        IList<Order_Branch> getOrderBranches();
-        IList<Order_Parcel> getOrderParcels(string BranchName);
+
+        // CREATE ===================================================================
+        // addOrder
+        void addOrder(Order order);
+
+        // READ =====================================================================
+        // getOrders
+        IList<Order> getOrders();
+
+        // getOrder
+        Order getOrder(int id);
+
+        // UPDATE ===================================================================
+        // editOrder
+        void editOrder(Order order);
+
+        // DELETE ===================================================================
+        // deleteOrder
+        void deleteOrder(Order order);
+
     }
+
 }
