@@ -1,4 +1,4 @@
-﻿@model ABCLogistics.Data.Order
+﻿﻿@model ABCLogistics.Data.Order
 
 @{
     ViewBag.Title = "New Order";
@@ -7,10 +7,10 @@
 <h2>New Order</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Order</h4>
         <hr />
