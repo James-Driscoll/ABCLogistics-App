@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ABCLogistics.Data.Address>
+
+@{
+    ViewBag.Title = " All Addresses";
+}
+
+<h2>All Addresses</h2>
+
+<p>
+    @Html.ActionLink("Add New Address", "addAddress", "Customer")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Street)*@
+            ID
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Street)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Town)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.County)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Postcode)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PK_AddressID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Street)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Town)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.County)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Postcode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "editAddress", new { id=item.PK_AddressID }) |
+            @Html.ActionLink("Details", "getAddress", new { id=item.PK_AddressID }) |
+            @Html.ActionLink("Delete", "deleteAddress", new { id=item.PK_AddressID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,43 @@
+﻿@model ABCLogistics.Data.Tracking
+
+@{
+    ViewBag.Title = "Tracking Details";
+}
+
+<h2>Tracking Details</h2>
+
+<div>
+    <h4>Tracking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "editTracking", new { id = Model.PK_TrackingID, controller = "Order" }) |
+    @Html.ActionLink("Back to Orders List", "getOrders", "Customer")
+</p>

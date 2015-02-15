@@ -1,0 +1,91 @@
+﻿@model ABCLogistics.Data.User
+
+@{
+    ViewBag.Title = "All Users";
+}
+
+<h2>All Users</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_BillingAddressID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_BillingAddressID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_DeliveryAddressID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_DeliveryAddressID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lastname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MobileNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LandlineNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LandlineNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SystemRole)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SystemRole)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "editUser", new { id = Model.PK_UserID, controller = "Admin" }) |
+    @Html.ActionLink("Back to User List", "getUsers", "Admin") |
+    @Html.ActionLink("Back to Orders List", "getOrders", "Customer")
+</p>

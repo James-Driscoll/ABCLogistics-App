@@ -1,0 +1,86 @@
+﻿@model IEnumerable<ABCLogistics.Data.Order>
+
+@{
+    ViewBag.Title = "All Orders";
+}
+
+<h2>All Orders</h2>
+
+<p>
+    @Html.ActionLink("Add New Order", "addOrder", "Order")
+</p>
+<table class="table text-center">
+    <tr>
+        <th class="text-center">
+            Order
+        </th>
+        <th class="text-center">
+            @*@Html.DisplayNameFor(model => model.FK_ItemID)*@
+            Item
+        </th>
+        <th class="text-center">
+            @*@Html.DisplayNameFor(model => model.FK_CustomerID)*@
+            Customer
+        </th>
+        <th class="text-center">
+            @*@Html.DisplayNameFor(model => model.FK_BranchAddressID)*@
+            Branch Address
+        </th>
+        <th class="text-center">
+            @*@Html.DisplayNameFor(model => model.FK_DeliveryAddressID)*@
+            Delivery Address
+        </th>
+        <th class="text-center">
+            Track
+        </th>
+        <th class="text-center">
+            @*@Html.DisplayNameFor(model => model.DateOrdered)*@
+            Date Ordered
+        </th>
+        <th class="text-center">
+            @*@Html.DisplayNameFor(model => model.DateDelivered)*@
+            Date Delivered
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PK_OrderID)
+        </td>
+        <td>
+            @*@Html.ActionLink(item.FK_ItemID.ToString(), "getItem", new { controller = "Customer", id = item.FK_ItemID })*@
+            <a href="@Url.Action("getItem", "Customer", new { id = item.FK_ItemID })"><span class="glyphicon glyphicon-book" aria-hidden="true"></span></a>
+        </td>
+        <td>
+            @*@Html.ActionLink(item.FK_CustomerID.ToString(), "getUser", new { controller = "Customer", id = item.FK_CustomerID })*@
+            <a href="@Url.Action("getUser", "Customer", new { id = item.FK_CustomerID })"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+        </td>
+        <td>
+            @*@Html.ActionLink(item.FK_BranchAddressID.ToString(), "getAddress", new { controller = "Customer", id = item.FK_BranchAddressID })*@
+            <a href="@Url.Action("getAddress", "Customer", new { id = item.FK_BranchAddressID })"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
+        </td>
+        <td>
+            @*@Html.ActionLink(item.FK_DeliveryAddressID.ToString(), "getAddress", new { controller = "Customer", id = item.FK_DeliveryAddressID })*@
+            <a href="@Url.Action("getAddress", "Customer", new { id = item.FK_DeliveryAddressID })"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
+        </td>
+        <td>
+            <a href="@Url.Action("getOrderTrackings", "Customer", new { order = item.PK_OrderID })"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOrdered)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateDelivered)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "editOrder", new { id = item.PK_OrderID, controller = "Order" }) |
+            @Html.ActionLink("Details", "getOrder", new { id = item.PK_OrderID }) |
+            @Html.ActionLink("Delete", "deleteOrder", new { id = item.PK_OrderID, controller = "Order" }) |
+            @Html.ActionLink("Add Tracking", "addTracking", new { FK_OrderID = item.PK_OrderID, controller = "Order" })
+        </td>
+    </tr>
+}
+
+</table>

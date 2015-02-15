@@ -1,0 +1,66 @@
+﻿@model ABCLogistics.Data.Order
+
+@{
+    ViewBag.Title = "Order Details";
+}
+
+<h2>Order Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_ItemID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_ItemID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_CustomerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_CustomerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_BranchAddressID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_BranchAddressID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_DeliveryAddressID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_DeliveryAddressID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOrdered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOrdered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateDelivered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateDelivered)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "editOrder", new { id = Model.PK_OrderID, controller = "Order" }) |
+    @Html.ActionLink("Back to Orders List", "getOrders", "Customer")
+</p>

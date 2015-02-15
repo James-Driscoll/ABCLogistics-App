@@ -202,7 +202,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Customer\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -227,6 +227,19 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Customer\addAddress.cshtml" />
+    <Content Include="Views\Customer\deleteAddress.cshtml" />
+    <Content Include="Views\Customer\editAddress.cshtml" />
+    <Content Include="Views\Customer\getAddress.cshtml" />
+    <Content Include="Views\Customer\getAddresses.cshtml" />
+    <Content Include="Views\Customer\getItem.cshtml" />
+    <Content Include="Views\Customer\getItems.cshtml" />
+    <Content Include="Views\Customer\getOrder.cshtml" />
+    <Content Include="Views\Customer\getOrders.cshtml" />
+    <Content Include="Views\Customer\getOrderTrackings.cshtml" />
+    <Content Include="Views\Customer\getTracking.cshtml" />
+    <Content Include="Views\Customer\getTrackings.cshtml" />
+    <Content Include="Views\Customer\getUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
