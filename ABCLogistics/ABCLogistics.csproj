@@ -258,6 +258,7 @@
     <Content Include="Views\Admin\getRegisteredUsers.cshtml" />
     <Content Include="Views\Admin\getRolesForUser.cshtml" />
     <Content Include="Views\Admin\getRolesForUserConfirmed.cshtml" />
+    <Content Include="Views\Admin\manageUserRoles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

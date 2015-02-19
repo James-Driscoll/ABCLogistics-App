@@ -100,6 +100,41 @@ namespace ABCLogistics.Controllers
         }
 
         // UPDATE ===================================================================
+        // manageUserRoles
+        [HttpGet]
+        public ActionResult manageUserRoles()
+        {
+            // populates roles for the view dropdown
+            var roleList = _context.Roles.OrderBy(r => r.Name).ToList().Select(rr =>
+                new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+            ViewBag.Roles = roleList;
+
+            // populates users for the view dropdown
+            var userList = _context.Users.OrderBy(u => u.UserName).ToList().Select(uu =>
+                new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
+            ViewBag.Users = userList;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult manageUserRoles(string userName, string roleName)
+        {
+            ApplicationUser user = _context.Users.Where(u => u.UserName.Equals(userName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+            var um = new Microsoft.AspNet.Identity.UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(_context));
+            var idResult = um.AddToRole(user.Id, roleName);
+
+            // prepopulat roles for the view dropdown
+            var roleList = _context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+            ViewBag.Roles = roleList;
+
+            // populate users for the view dropdown
+            var userList = _context.Users.OrderBy(u => u.UserName).ToList().Select(uu => new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
+            ViewBag.Users = userList;
+
+            return View("ManageUserRoles");
+        }
+
         // editUser
         [HttpGet]
         public ActionResult editUser(int id)
