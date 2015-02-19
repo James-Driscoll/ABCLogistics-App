@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using ABCLogistics.Data;
 using ABCLogistics.Services;
 using ABCLogistics.Services.Service;
+using ABCLogistics.Models;
 
 namespace ABCLogistics.Controllers
 {
@@ -68,6 +69,28 @@ namespace ABCLogistics.Controllers
         public ActionResult getRegisteredUsers()
         {
             return View(_context.Users.ToList());
+        }
+
+        // getRolesForUser
+        [HttpGet]
+        public ActionResult getRolesForUser()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult getRolesForUser(string userName)
+        {
+            if (!string.IsNullOrWhiteSpace(userName))
+            {
+                ApplicationUser user = _context.Users.Where(u => u.UserName.Equals(
+                    userName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+                var um = new UserManager<ApplicationUser>(
+                    new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(_context));
+                ViewBag.RolesForThisUser = um.GetRoles(user.Id);
+            }
+            return View("getRolesForUserConfirmed");
         }
 
         // getUsers
