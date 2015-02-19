@@ -66,6 +66,7 @@
     <Compile Include="Address.cs">
       <DependentUpon>ABCLogisticsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="BEANS\OrderBEAN.cs" />
     <Compile Include="DAO\AddressDAO.cs" />
     <Compile Include="DAO\ItemDAO.cs" />
     <Compile Include="DAO\OrderDAO.cs" />
