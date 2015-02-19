@@ -25,6 +25,29 @@ namespace ABCLogistics.Controllers
         }
 
         // CREATE ===================================================================
+        // createRole
+        [HttpGet]
+        public ActionResult createRole()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult createRole(FormCollection collection)
+        {
+            try
+            {
+                _context.Roles.Add(
+                    new IdentityRole() { Name = collection["RoleName"] });
+                _context.SaveChanges();
+                return RedirectToAction("getRoles");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        
         // addUser
         [HttpGet]
         public ActionResult addUser()
