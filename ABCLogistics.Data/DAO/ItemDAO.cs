@@ -56,6 +56,7 @@ namespace ABCLogistics.Data.DAO
                               in _context.Items
                            where rec.PK_ItemID == item.PK_ItemID
                            select rec).ToList<Item>().First();
+            record.Name = item.Name;
             record.InsuranceType = item.InsuranceType;
             record.RecordedDelivery = item.RecordedDelivery;
             record.SizeCategory = item.SizeCategory;
