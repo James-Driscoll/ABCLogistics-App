@@ -64,6 +64,12 @@ namespace ABCLogistics.Controllers
         }
 
         // READ =====================================================================
+        // getRegisteredUsers
+        public ActionResult getRegisteredUsers()
+        {
+            return View(_context.Users.ToList());
+        }
+
         // getUsers
         public ActionResult getUsers()
         {
