@@ -28,10 +28,10 @@ namespace ABCLogistics.Data
         public Nullable<System.DateTime> DateDelivered { get; set; }
         public string Status { get; set; }
     
-        public virtual Address Address { get; set; }
-        public virtual Address Address1 { get; set; }
-        public virtual Item Item { get; set; }
         public virtual User User { get; set; }
         public virtual ICollection<Tracking> Trackings { get; set; }
+        public virtual Item Item { get; set; }
+        public virtual Address Address { get; set; }
+        public virtual Address Address1 { get; set; }
     }
 }

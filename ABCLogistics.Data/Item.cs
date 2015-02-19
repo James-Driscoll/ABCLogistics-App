@@ -20,6 +20,7 @@ namespace ABCLogistics.Data
         }
     
         public int PK_ItemID { get; set; }
+        public int Name { get; set; }
         public Nullable<int> Weight { get; set; }
         public string SizeCategory { get; set; }
         public string Type { get; set; }

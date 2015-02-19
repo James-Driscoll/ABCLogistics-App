@@ -5,18 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5fa731cba2e64bc7996a950d7817f342" Name="Diagram1">
-        <EntityTypeShape EntityType="ABCLogisticsDataModel.Address" Width="1.5" PointX="2" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ABCLogisticsDataModel.Item" Width="1.5" PointX="9" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="ABCLogisticsDataModel.Order" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ABCLogisticsDataModel.Tracking" Width="1.5" PointX="9" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ABCLogisticsDataModel.User" Width="1.5" PointX="2" PointY="8.25" IsExpanded="true" />
-        <AssociationConnector Association="ABCLogisticsDataModel.C_BranchAddress" ManuallyRouted="false" />
-        <AssociationConnector Association="ABCLogisticsDataModel.C_DeliveryAddress" ManuallyRouted="false" />
-        <AssociationConnector Association="ABCLogisticsDataModel.C_UserBillingAddress" ManuallyRouted="false" />
-        <AssociationConnector Association="ABCLogisticsDataModel.C_UserDeliveryAddress" ManuallyRouted="false" />
-        <AssociationConnector Association="ABCLogisticsDataModel.C_Item" ManuallyRouted="false" />
         <AssociationConnector Association="ABCLogisticsDataModel.C_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="ABCLogisticsDataModel.C_Order" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ABCLogisticsDataModel.Item" Width="1.5" PointX="9" PointY="3.875" />
+        <AssociationConnector Association="ABCLogisticsDataModel.C_Item" />
+        <EntityTypeShape EntityType="ABCLogisticsDataModel.Address" Width="1.5" PointX="2" PointY="3.875" />
+        <AssociationConnector Association="ABCLogisticsDataModel.C_BranchAddress" />
+        <AssociationConnector Association="ABCLogisticsDataModel.C_DeliveryAddress" />
+        <AssociationConnector Association="ABCLogisticsDataModel.C_UserBillingAddress" />
+        <AssociationConnector Association="ABCLogisticsDataModel.C_UserDeliveryAddress" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

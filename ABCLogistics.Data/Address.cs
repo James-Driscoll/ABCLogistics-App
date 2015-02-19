@@ -23,6 +23,7 @@ namespace ABCLogistics.Data
         }
     
         public int PK_AddressID { get; set; }
+        public string Name { get; set; }
         public string Street { get; set; }
         public string Town { get; set; }
         public string County { get; set; }

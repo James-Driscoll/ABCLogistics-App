@@ -30,8 +30,8 @@ namespace ABCLogistics.Data
         public string SystemRole { get; set; }
         public string Password { get; set; }
     
+        public virtual ICollection<Order> Orders { get; set; }
         public virtual Address Address { get; set; }
         public virtual Address Address1 { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
     }
 }
