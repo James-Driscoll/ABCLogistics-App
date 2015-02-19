@@ -4,29 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ABCLogistics.Data;
-using ABCLogistics.Services;
-using ABCLogistics.Services.Service;
 
 namespace ABCLogistics.Controllers
 {
-    public class OrderController : Controller
+    public class OrderController : ApplicationController
     {
-
-        // Create local item service
-        private ItemService _itemService;
-
-        // Create local order service.
-        private OrderService _orderService;
-
-        // Create a local tracking service.
-        private TrackingService _trackingService;
-
-        public OrderController()
-        {
-            _itemService = new ItemService();
-            _orderService = new OrderService();
-            _trackingService = new TrackingService();
-        }
 
         // CREATE ===================================================================
         // addItem

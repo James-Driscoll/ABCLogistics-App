@@ -9,16 +9,9 @@ using ABCLogistics.Services.Service;
 
 namespace ABCLogistics.Controllers
 {
-    public class AdminController : Controller
+    
+    public class AdminController : ApplicationController
     {
-
-        // Declare a local user service.
-        private UserService _userService;
-
-        public AdminController()
-        {
-            _userService = new UserService();
-        }
 
         // CREATE ===================================================================
         // addUser
@@ -89,5 +82,7 @@ namespace ABCLogistics.Controllers
                 return View();
             }
         }
+
     }
+
 }
