@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using ABCLogistics.Data;
 using ABCLogistics.Services;
 using ABCLogistics.Services.Service;
@@ -12,6 +14,15 @@ namespace ABCLogistics.Controllers
     
     public class AdminController : ApplicationController
     {
+
+        // Framework class for managing authorisation.
+        private ABCLogistics.Models.ApplicationDbContext _context;
+
+        // CONSTRUCTOR ==============================================================
+        public AdminController()
+        {
+            _context = new ABCLogistics.Models.ApplicationDbContext();
+        }
 
         // CREATE ===================================================================
         // addUser

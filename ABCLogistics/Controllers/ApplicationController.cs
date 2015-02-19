@@ -20,7 +20,7 @@ namespace ABCLogistics.Controllers
         public ABCLogistics.Services.Service.TrackingService _trackingService;
         public ABCLogistics.Services.Service.UserService _userService;
 
-        // Constructor
+        // CONSTRUCTOR ==============================================================
         public ApplicationController()
         {
             _addressService = new ABCLogistics.Services.Service.AddressService();
