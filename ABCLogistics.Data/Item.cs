@@ -20,12 +20,12 @@ namespace ABCLogistics.Data
         }
     
         public int PK_ItemID { get; set; }
-        public int Name { get; set; }
-        public Nullable<int> Weight { get; set; }
+        public string Name { get; set; }
+        public int Weight { get; set; }
         public string SizeCategory { get; set; }
         public string Type { get; set; }
-        public string InsuranceType { get; set; }
-        public string RecordedDelivery { get; set; }
+        public bool Insured { get; set; }
+        public bool RecordedDelivery { get; set; }
     
         public virtual ICollection<Order> Orders { get; set; }
     }

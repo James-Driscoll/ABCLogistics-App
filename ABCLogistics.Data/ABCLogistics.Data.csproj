@@ -48,23 +48,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ABCLogisticsModel.Context.cs">
+    <Compile Include="ABCLogisticsDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ABCLogisticsModel.Context.tt</DependentUpon>
+      <DependentUpon>ABCLogisticsDataModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ABCLogisticsModel.cs">
+    <Compile Include="ABCLogisticsDataModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ABCLogisticsModel.tt</DependentUpon>
+      <DependentUpon>ABCLogisticsDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ABCLogisticsModel.Designer.cs">
+    <Compile Include="ABCLogisticsDataModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ABCLogisticsModel.edmx</DependentUpon>
+      <DependentUpon>ABCLogisticsDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Address.cs">
-      <DependentUpon>ABCLogisticsModel.tt</DependentUpon>
+      <DependentUpon>ABCLogisticsDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="BEANS\OrderBEAN.cs" />
     <Compile Include="DAO\AddressDAO.cs" />
@@ -78,37 +78,37 @@
     <Compile Include="IDAO\ITrackingDAO.cs" />
     <Compile Include="IDAO\IUserDAO.cs" />
     <Compile Include="Item.cs">
-      <DependentUpon>ABCLogisticsModel.tt</DependentUpon>
+      <DependentUpon>ABCLogisticsDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Order.cs">
-      <DependentUpon>ABCLogisticsModel.tt</DependentUpon>
+      <DependentUpon>ABCLogisticsDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tracking.cs">
-      <DependentUpon>ABCLogisticsModel.tt</DependentUpon>
+      <DependentUpon>ABCLogisticsDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>ABCLogisticsModel.tt</DependentUpon>
+      <DependentUpon>ABCLogisticsDataModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EntityDeploy Include="ABCLogisticsModel.edmx">
+    <EntityDeploy Include="ABCLogisticsDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ABCLogisticsModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>ABCLogisticsDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ABCLogisticsModel.Context.tt">
+    <None Include="ABCLogisticsDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ABCLogisticsModel.edmx</DependentUpon>
-      <LastGenOutput>ABCLogisticsModel.Context.cs</LastGenOutput>
+      <DependentUpon>ABCLogisticsDataModel.edmx</DependentUpon>
+      <LastGenOutput>ABCLogisticsDataModel.Context.cs</LastGenOutput>
     </None>
-    <None Include="ABCLogisticsModel.edmx.diagram">
-      <DependentUpon>ABCLogisticsModel.edmx</DependentUpon>
+    <None Include="ABCLogisticsDataModel.edmx.diagram">
+      <DependentUpon>ABCLogisticsDataModel.edmx</DependentUpon>
     </None>
-    <None Include="ABCLogisticsModel.tt">
+    <None Include="ABCLogisticsDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ABCLogisticsModel.edmx</DependentUpon>
-      <LastGenOutput>ABCLogisticsModel.cs</LastGenOutput>
+      <DependentUpon>ABCLogisticsDataModel.edmx</DependentUpon>
+      <LastGenOutput>ABCLogisticsDataModel.cs</LastGenOutput>
     </None>
     <None Include="App.Config" />
     <None Include="packages.config" />

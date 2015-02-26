@@ -20,6 +20,11 @@ namespace ABCLogistics.Controllers
         public ABCLogistics.Services.Service.TrackingService _trackingService;
         public ABCLogistics.Services.Service.UserService _userService;
 
+        // Declare dictionaries.
+        //public Dictionary<int, string> _itemDictionary;
+        //public Dictionary<int, string> _addressDictionary;
+        //public Dictionary<int, string> _branchDictionary;
+
         // CONSTRUCTOR ==============================================================
         public ApplicationController()
         {
@@ -28,6 +33,9 @@ namespace ABCLogistics.Controllers
             _orderService = new ABCLogistics.Services.Service.OrderService();
             _trackingService = new ABCLogistics.Services.Service.TrackingService();
             _userService = new ABCLogistics.Services.Service.UserService();
+
+            //ViewBag.Items = _itemService.getItems();
+
         }
 
     }
