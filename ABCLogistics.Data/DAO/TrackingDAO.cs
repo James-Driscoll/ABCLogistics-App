@@ -54,7 +54,7 @@ namespace ABCLogistics.Data.DAO
             IQueryable<Tracking> _tracking;
             _tracking = from tracking
                      in _context.Trackings
-                        where tracking.PK_TrackingID == id
+                        where tracking.Id == id
                         select tracking;
             return _tracking.ToList<Tracking>().First();
         }
@@ -65,7 +65,7 @@ namespace ABCLogistics.Data.DAO
         {
             Tracking record = (from rec
                               in _context.Trackings
-                               where rec.PK_TrackingID == tracking.PK_TrackingID
+                               where rec.Id == tracking.Id
                                select rec).ToList<Tracking>().First();
             record.FK_OrderID = tracking.FK_OrderID;
             record.Location = tracking.Location;

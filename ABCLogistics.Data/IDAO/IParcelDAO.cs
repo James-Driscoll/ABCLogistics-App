@@ -7,27 +7,27 @@ using System.Threading.Tasks;
 namespace ABCLogistics.Data.IDAO
 {
 
-    interface IAddressDAO
+    interface IParcelDAO
     {
 
         // CREATE ====================================================================
-        // addAddress
-        void addAddress(Address address);
+        // addParcel
+        void addParcel(Parcel parcel);
 
         // READ ======================================================================
-        // getAddresses
-        IList<Address> getAddresses();
+        // getParcels
+        IList<Parcel> getParcels();
 
-        // getAddress
-        Address getAddress(int id);
+        // getParcel
+        Parcel getParcel(int id);
 
         // UPDATE ====================================================================
-        // editAddress
-        void editAddress(Address address);
+        // editParcel
+        void editParcel(Parcel parcel);
 
         // DELETE ====================================================================
-        // deleteAddress
-        void deleteAddress(Address address);
+        // deleteParcel
+        void deleteParcel(Parcel parcel);
 
     }
 

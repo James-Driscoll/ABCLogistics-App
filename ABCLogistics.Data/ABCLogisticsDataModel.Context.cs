@@ -25,9 +25,7 @@ namespace ABCLogistics.Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Address> Addresses { get; set; }
-        public virtual DbSet<Item> Items { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Parcel> Parcels { get; set; }
         public virtual DbSet<Tracking> Trackings { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }

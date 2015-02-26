@@ -14,9 +14,7 @@ namespace ABCLogistics.Controllers
     {
 
         // Declare services
-        public ABCLogistics.Services.Service.AddressService _addressService;
-        public ABCLogistics.Services.Service.ItemService _itemService;
-        public ABCLogistics.Services.Service.OrderService _orderService;
+        public ABCLogistics.Services.Service.ParcelService _parcelService;
         public ABCLogistics.Services.Service.TrackingService _trackingService;
         public ABCLogistics.Services.Service.UserService _userService;
 
@@ -28,9 +26,7 @@ namespace ABCLogistics.Controllers
         // CONSTRUCTOR ==============================================================
         public ApplicationController()
         {
-            _addressService = new ABCLogistics.Services.Service.AddressService();
-            _itemService = new ABCLogistics.Services.Service.ItemService();
-            _orderService = new ABCLogistics.Services.Service.OrderService();
+            _parcelService = new ABCLogistics.Services.Service.ParcelService();
             _trackingService = new ABCLogistics.Services.Service.TrackingService();
             _userService = new ABCLogistics.Services.Service.UserService();
 

@@ -11,70 +11,71 @@ namespace ABCLogistics.Controllers
     {
 
         // CREATE ===================================================================
-        // addItem
+        // AddParcel
         [HttpGet]
-        public ActionResult addItem()
+        public ActionResult AddParcel()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult addItem(Item item)
+        public ActionResult AddParcel(Parcel parcel)
         {
             View();
-            _itemService.addItem(item);
-            return RedirectToAction("getItems", "Customer");
+            _parcelService.addParcel(parcel);
+            return RedirectToAction("Parcels", "Order");
         }
 
-        // addTracking
+        // AddTracking
         [HttpGet]
-        public ActionResult addTracking(int FK_OrderID)
+        public ActionResult AddTracking(int order)
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult addTracking(Tracking tracking)
+        public ActionResult AddTracking(Tracking tracking)
         {
             View();
             _trackingService.addTracking(tracking);
-            return RedirectToAction("getOrders", "Customer");
-        }
-
-        // addOrder
-        [HttpGet]
-        public ActionResult addOrder()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult addOrder(Order order)
-        {
-            View();
-            _orderService.addOrder(order);
-            return RedirectToAction("getOrders", "Customer");
+            return RedirectToAction("Parcels", "Order");
         }
 
         // READ =====================================================================
+        // Parcels
+        public ActionResult Parcels()
+        {
+            return View(_parcelService.getParcels());
+        }
 
+        // Parcel
+        public ActionResult Parcel(int id)
+        {
+            return View(_parcelService.getParcel(id));
+        }
+
+        // Trackings
+        public ActionResult Trackings(int order)
+        {
+            return View(_trackingService.getOrderTrackings(order));
+        }
 
         // UPDATE ===================================================================
-        // editItem
+        // EditParcel
         [HttpGet]
-        public ActionResult editItem(int id)
+        public ActionResult EditParcel(int id)
         {
-            Item record = _itemService.getItem(id);
+            Parcel record = _parcelService.getParcel(id);
             return View(record);
         }
 
         [HttpPost]
-        public ActionResult editItem(Item item)
+        public ActionResult EditParcel(Parcel parcel)
         {
             try
             {
-                _itemService.editItem(item);
-                return RedirectToAction("getItems", "Customer");
+                _parcelService.editParcel(parcel);
+                return RedirectToAction("Parcels", "Order");
             }
             catch
             {
@@ -82,43 +83,21 @@ namespace ABCLogistics.Controllers
             }
         }
 
-        // editTracking
+        // EditTracking
         [HttpGet]
-        public ActionResult editTracking(int id)
+        public ActionResult EditTracking(int id)
         {
             Tracking record = _trackingService.getTracking(id);
             return View(record);
         }
 
         [HttpPost]
-        public ActionResult editTracking(Tracking tracking)
+        public ActionResult EditTracking(Tracking tracking)
         {
             try
             {
                 _trackingService.editTracking(tracking);
-                return RedirectToAction("getTrackings", "Customer");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // editOrder
-        [HttpGet]
-        public ActionResult editOrder(int id)
-        {
-            Order order = _orderService.getOrder(id);
-            return View(order);
-        }
-
-        [HttpPost]
-        public ActionResult editOrder(Order order)
-        {
-            try
-            {
-                _orderService.editOrder(order);
-                return RedirectToAction("getOrders", "Customer");
+                return RedirectToAction("Parcels", "Order");
             }
             catch
             {
@@ -127,22 +106,22 @@ namespace ABCLogistics.Controllers
         }
 
         // DELETE ===================================================================
-        // deleteItem
+        // DeleteParcel
         [HttpGet]
-        public ActionResult deleteItem(int id)
+        public ActionResult AeleteParcel(int id)
         {
-            Item item = _itemService.getItem(id);
-            return View(item);
+            Parcel parcel = _parcelService.getParcel(id);
+            return View(parcel);
         }
 
         [HttpPost]
-        public ActionResult deleteItem(Item item, int id)
+        public ActionResult DeleteParcel(Parcel parcel, int id)
         {
             try
             {
-                Item _item = _itemService.getItem(id);
-                _itemService.deleteItem(_item);
-                return RedirectToAction("getItems", "Customer");
+                Parcel _parcel = _parcelService.getParcel(id);
+                _parcelService.deleteParcel(_parcel);
+                return RedirectToAction("Parcels", "Order");
             }
             catch
             {
@@ -150,45 +129,22 @@ namespace ABCLogistics.Controllers
             }
         }
 
-        // deleteTracking
+        // DeleteTracking
         [HttpGet]
-        public ActionResult deleteTracking(int id)
+        public ActionResult DeleteTracking(int id)
         {
             Tracking tracking = _trackingService.getTracking(id);
             return View(tracking);
         }
 
         [HttpPost]
-        public ActionResult deleteTracking(Tracking tracking, int id)
+        public ActionResult DeleteTracking(Tracking tracking, int id)
         {
             try
             {
                 Tracking _tracking = _trackingService.getTracking(id);
                 _trackingService.deleteTracking(_tracking);
-                return RedirectToAction("getTrackings", "Customer");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // deleteOrder
-        [HttpGet]
-        public ActionResult deleteOrder(int id)
-        {
-            Order order = _orderService.getOrder(id);
-            return View(order);
-        }
-
-        [HttpPost]
-        public ActionResult deleteOrder(Order order, int id)
-        {
-            try
-            {
-                Order _order = _orderService.getOrder(id);
-                _orderService.deleteOrder(_order);
-                return RedirectToAction("getOrders", "Customer");
+                return RedirectToAction("Parcels", "Order");
             }
             catch
             {
@@ -197,4 +153,5 @@ namespace ABCLogistics.Controllers
         }
 
     }
+
 }

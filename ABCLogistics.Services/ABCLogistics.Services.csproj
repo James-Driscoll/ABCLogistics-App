@@ -39,15 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IService\IAddressService.cs" />
-    <Compile Include="IService\IItemService.cs" />
-    <Compile Include="IService\IOrderService.cs" />
+    <Compile Include="IService\IParcelService.cs" />
     <Compile Include="IService\ITrackingService.cs" />
-    <Compile Include="IService\IUserInterface.cs" />
+    <Compile Include="IService\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\AddressService.cs" />
-    <Compile Include="Service\ItemService.cs" />
-    <Compile Include="Service\OrderService.cs" />
+    <Compile Include="Service\ParcelService.cs" />
     <Compile Include="Service\TrackingService.cs" />
     <Compile Include="Service\UserService.cs" />
   </ItemGroup>

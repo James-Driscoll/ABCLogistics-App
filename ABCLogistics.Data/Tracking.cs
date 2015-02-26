@@ -14,12 +14,10 @@ namespace ABCLogistics.Data
     
     public partial class Tracking
     {
-        public int PK_TrackingID { get; set; }
+        public int Id { get; set; }
         public int FK_OrderID { get; set; }
         public string Location { get; set; }
         public System.DateTime Date { get; set; }
         public string Status { get; set; }
-    
-        public virtual Order Order { get; set; }
     }
 }

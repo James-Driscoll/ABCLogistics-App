@@ -8,27 +8,27 @@ using ABCLogistics.Data;
 namespace ABCLogistics.Services.IService
 {
 
-    interface IOrderService
+    interface IParcelService
     {
 
         // CREATE ===================================================================
-        // addOrder
-        void addOrder(Order order);
+        // addParcel
+        void addParcel(Parcel parcel);
 
         // READ =====================================================================
-        // getOrders
-        IList<Order> getOrders();
+        // getParcels
+        IList<Parcel> getParcels();
 
-        // getOrder
-        Order getOrder(int id);
+        // getParcel
+        Parcel getParcel(int id);
 
         // UPDATE ===================================================================
-        // editOrder
-        void editOrder(Order order);
+        // editParcel
+        void editParcel(Parcel parcel);
 
         // DELETE ===================================================================
-        // deleteOrder
-        void deleteOrder(Order order);
+        // deleteParcel
+        void deleteParcel(Parcel parcel);
 
     }
 

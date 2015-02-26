@@ -43,7 +43,7 @@ namespace ABCLogistics.Data.DAO
             IQueryable<User> _user;
             _user = from user
                           in _context.Users
-                    where user.PK_UserID == id
+                    where user.Id == id
                     select user;
             return _user.ToList<User>().First();
         }
@@ -54,15 +54,11 @@ namespace ABCLogistics.Data.DAO
         {
             User record = (from rec
                                       in _context.Users
-                           where rec.PK_UserID == user.PK_UserID
+                           where rec.Id == user.Id
                            select rec).ToList<User>().First();
+            record.Name = user.Name;
+            record.ContactNumber = user.ContactNumber;
             record.EmailAddress = user.EmailAddress;
-            record.FirstName = user.FirstName;
-            record.Lastname = user.Lastname;
-            record.MobileNumber = user.MobileNumber;
-            record.LandlineNumber = user.LandlineNumber;
-            record.FK_BillingAddressID = user.FK_BillingAddressID;
-            record.FK_DeliveryAddressID = user.FK_DeliveryAddressID;
             _context.SaveChanges();
         }
 

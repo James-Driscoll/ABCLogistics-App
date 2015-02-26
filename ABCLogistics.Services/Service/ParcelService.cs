@@ -10,50 +10,49 @@ using ABCLogistics.Data.DAO;
 namespace ABCLogistics.Services.Service
 {
 
-    public class OrderService : IOrderService
+    public class ParcelService : IParcelService
     {
 
-        private OrderDAO _OrderDAO;
+        private ParcelDAO _parcelDAO;
 
-        public OrderService()
+        public ParcelService()
         {
-            _OrderDAO = new OrderDAO();
+            _parcelDAO = new ParcelDAO();
         }
 
         // CREATE ===================================================================
-        // addOrder
-        public void addOrder(Order order)
+        // addParcel
+        public void addParcel(Parcel parcel)
         {
-            _OrderDAO.addOrder(order);
+            _parcelDAO.addParcel(parcel);
         }
 
         // READ =====================================================================
-        // getOrders
-        public IList<Order> getOrders()
+        // getParcels
+        public IList<Parcel> getParcels()
         {
-            return _OrderDAO.getOrders();
+            return _parcelDAO.getParcels();
         }
 
-        // getOrder
-        public Order getOrder(int id)
+        // getParcel
+        public Parcel getParcel(int id)
         {
-            return _OrderDAO.getOrder(id);
+            return _parcelDAO.getParcel(id);
         }
 
         // UPDATE ===================================================================
-        // editOrder
-        public void editOrder(Order order)
+        // editParcel
+        public void editParcel(Parcel parcel)
         {
-            _OrderDAO.editOrder(order);
+            _parcelDAO.editParcel(parcel);
         }
 
         // DELETE ===================================================================
-        // deleteOrder
-        public void deleteOrder(Order order)
+        // deleteParcel
+        public void deleteParcel(Parcel parcel)
         {
-            _OrderDAO.deleteOrder(order);
+            _parcelDAO.deleteParcel(parcel);
         }
 
     }
-
 }

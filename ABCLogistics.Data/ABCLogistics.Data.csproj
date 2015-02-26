@@ -63,24 +63,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ABCLogisticsDataModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Address.cs">
-      <DependentUpon>ABCLogisticsDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BEANS\OrderBEAN.cs" />
-    <Compile Include="DAO\AddressDAO.cs" />
-    <Compile Include="DAO\ItemDAO.cs" />
-    <Compile Include="DAO\OrderDAO.cs" />
+    <Compile Include="DAO\ParcelDAO.cs" />
     <Compile Include="DAO\TrackingDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
-    <Compile Include="IDAO\IAddressDAO.cs" />
-    <Compile Include="IDAO\IItemDAO.cs" />
-    <Compile Include="IDAO\IOrderDAO.cs" />
+    <Compile Include="IDAO\IParcelDAO.cs" />
     <Compile Include="IDAO\ITrackingDAO.cs" />
     <Compile Include="IDAO\IUserDAO.cs" />
-    <Compile Include="Item.cs">
-      <DependentUpon>ABCLogisticsDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Order.cs">
+    <Compile Include="Parcel.cs">
       <DependentUpon>ABCLogisticsDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,7 +80,9 @@
       <DependentUpon>ABCLogisticsDataModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="BEANS\" />
+  </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="ABCLogisticsDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

@@ -12,21 +12,12 @@ namespace ABCLogistics.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Item
+    public partial class Parcel
     {
-        public Item()
-        {
-            this.Orders = new HashSet<Order>();
-        }
-    
-        public int PK_ItemID { get; set; }
-        public string Name { get; set; }
+        public int Id { get; set; }
         public int Weight { get; set; }
-        public string SizeCategory { get; set; }
-        public string Type { get; set; }
         public bool Insured { get; set; }
-        public bool RecordedDelivery { get; set; }
-    
-        public virtual ICollection<Order> Orders { get; set; }
+        public System.DateTime DateOrdered { get; set; }
+        public string CustomerName { get; set; }
     }
 }

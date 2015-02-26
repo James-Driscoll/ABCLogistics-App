@@ -228,32 +228,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Customer\addAddress.cshtml" />
-    <Content Include="Views\Customer\deleteAddress.cshtml" />
-    <Content Include="Views\Customer\editAddress.cshtml" />
-    <Content Include="Views\Customer\getAddress.cshtml" />
-    <Content Include="Views\Customer\getAddresses.cshtml" />
-    <Content Include="Views\Customer\getItem.cshtml" />
-    <Content Include="Views\Customer\getItems.cshtml" />
-    <Content Include="Views\Customer\getOrder.cshtml" />
-    <Content Include="Views\Customer\getOrders.cshtml" />
-    <Content Include="Views\Customer\getOrderTrackings.cshtml" />
-    <Content Include="Views\Customer\getTracking.cshtml" />
-    <Content Include="Views\Customer\getTrackings.cshtml" />
-    <Content Include="Views\Customer\getUser.cshtml" />
     <Content Include="Views\Admin\addUser.cshtml" />
     <Content Include="Views\Admin\deleteUser.cshtml" />
     <Content Include="Views\Admin\editUser.cshtml" />
     <Content Include="Views\Admin\getUsers.cshtml" />
-    <Content Include="Views\Order\addItem.cshtml" />
-    <Content Include="Views\Order\addTracking.cshtml" />
-    <Content Include="Views\Order\deleteItem.cshtml" />
-    <Content Include="Views\Order\deleteOrder.cshtml" />
-    <Content Include="Views\Order\deleteTracking.cshtml" />
-    <Content Include="Views\Order\editItem.cshtml" />
-    <Content Include="Views\Order\editOrder.cshtml" />
-    <Content Include="Views\Order\editTracking.cshtml" />
-    <Content Include="Views\Order\addOrder.cshtml" />
     <Content Include="Views\Admin\createRole.cshtml" />
     <Content Include="Views\Admin\getRegisteredUsers.cshtml" />
     <Content Include="Views\Admin\getRolesForUser.cshtml" />
@@ -263,6 +241,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Application\" />
+    <Folder Include="Views\Customer\" />
+    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

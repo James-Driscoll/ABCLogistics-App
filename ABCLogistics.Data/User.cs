@@ -14,22 +14,9 @@ namespace ABCLogistics.Data
     
     public partial class User
     {
-        public User()
-        {
-            this.Orders = new HashSet<Order>();
-        }
-    
-        public int PK_UserID { get; set; }
-        public Nullable<int> FK_BillingAddressID { get; set; }
-        public Nullable<int> FK_DeliveryAddressID { get; set; }
-        public string FirstName { get; set; }
-        public string Lastname { get; set; }
-        public string MobileNumber { get; set; }
-        public string LandlineNumber { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string ContactNumber { get; set; }
         public string EmailAddress { get; set; }
-    
-        public virtual Address Address { get; set; }
-        public virtual Address Address1 { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
     }
 }
