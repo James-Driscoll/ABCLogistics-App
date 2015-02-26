@@ -61,8 +61,6 @@ namespace ABCLogistics.Data.DAO
             record.Lastname = user.Lastname;
             record.MobileNumber = user.MobileNumber;
             record.LandlineNumber = user.LandlineNumber;
-            record.SystemRole = user.SystemRole;
-            record.Password = user.Password;
             record.FK_BillingAddressID = user.FK_BillingAddressID;
             record.FK_DeliveryAddressID = user.FK_DeliveryAddressID;
             _context.SaveChanges();

@@ -57,7 +57,8 @@ namespace ABCLogistics.Data.DAO
                               where rec.PK_AddressID == address.PK_AddressID
                               select rec).ToList<Address>().First();
             record.Name = address.Name;
-            record.Street = address.Street;
+            record.AddressLine1 = address.AddressLine1;
+            record.AddressLine2 = address.AddressLine2;
             record.Town = address.Town;
             record.County = address.County;
             record.Postcode = address.Postcode;
