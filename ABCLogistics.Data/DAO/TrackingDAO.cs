@@ -12,7 +12,8 @@ namespace ABCLogistics.Data.DAO
     {
 
         private ABCLogisticsDataEntities _context;
-
+        
+        // CONSTRUCTOR ===============================================================
         public TrackingDAO()
         {
             _context = new ABCLogisticsDataEntities();

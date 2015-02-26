@@ -63,6 +63,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ABCLogisticsDataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="BEANS\OrderBEAN.cs" />
     <Compile Include="DAO\ParcelDAO.cs" />
     <Compile Include="DAO\TrackingDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
@@ -80,9 +81,7 @@
       <DependentUpon>ABCLogisticsDataModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BEANS\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EntityDeploy Include="ABCLogisticsDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
