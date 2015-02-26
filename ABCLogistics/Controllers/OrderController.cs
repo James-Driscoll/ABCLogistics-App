@@ -43,9 +43,9 @@ namespace ABCLogistics.Controllers
 
         // READ =====================================================================
         // Parcels
-        public ActionResult Parcels()
+        public ActionResult Parcels(int customer)
         {
-            return View(_parcelService.getParcels());
+            return View(_parcelService.getCustomerParcels(customer));
         }
 
         // Parcel

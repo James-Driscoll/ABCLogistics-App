@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ABCLogistics.Data.IDAO;
+using ABCLogistics.Data.BEANS;
 
 namespace ABCLogistics.Data.DAO
 {
@@ -28,14 +29,33 @@ namespace ABCLogistics.Data.DAO
         }
 
         // READ ======================================================================
-        // getParcels
+        // getParcels : Returns IList of all parcels of type Parcel.
         public IList<Parcel> getParcels()
         {
             IQueryable<Parcel> _parcels;
             _parcels = from Parcel
                           in _context.Parcels
-                     select Parcel;
+                       select Parcel;
             return _parcels.ToList<Parcel>();
+        }
+
+        // getCustomerParcels : Returns IList of OrderBEAN parcels for a specific customer.
+        public IList<ABCLogistics.Data.BEANS.OrderBEAN> getCustomerParcels(int customer)
+        {       
+            IQueryable<OrderBEAN> _orderBEANs;
+            _orderBEANs = from parcel in _context.Parcels
+                          from user in _context.Users
+                          where parcel.Customer == user.Id
+                          where user.Id == customer
+                          select new OrderBEAN
+                          {
+                              Id = parcel.Id,
+                              Weight = parcel.Weight,
+                              Insured = parcel.Insured,
+                              DateOrdered = parcel.DateOrdered,
+                              CustomerName = user.Name
+                          };
+            return _orderBEANs.ToList<OrderBEAN>();
         }
 
         // getParcel
@@ -57,7 +77,7 @@ namespace ABCLogistics.Data.DAO
                              in _context.Parcels
                              where rec.Id == parcel.Id
                              select rec).ToList<Parcel>().First();
-            record.CustomerName = parcel.CustomerName;
+            record.Customer = parcel.Customer;
             record.DateOrdered = parcel.DateOrdered;
             record.Weight = parcel.Weight;
             record.Insured = parcel.Insured;

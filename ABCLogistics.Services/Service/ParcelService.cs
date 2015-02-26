@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ABCLogistics.Services.IService;
 using ABCLogistics.Data;
 using ABCLogistics.Data.DAO;
+using ABCLogistics.Data.BEANS;
 
 namespace ABCLogistics.Services.Service
 {
@@ -28,10 +29,16 @@ namespace ABCLogistics.Services.Service
         }
 
         // READ =====================================================================
-        // getParcels
+        // getParcels : Returns IList of all parcels of type Parcel.
         public IList<Parcel> getParcels()
         {
             return _parcelDAO.getParcels();
+        }
+        
+        // getCustomerParcels : Returns IList of OrderBEAN parcels for a specific customer.
+        public IList<ABCLogistics.Data.BEANS.OrderBEAN> getCustomerParcels(int customer)
+        {
+            return _parcelDAO.getCustomerParcels(customer);
         }
 
         // getParcel
