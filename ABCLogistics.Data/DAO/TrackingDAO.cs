@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ABCLogistics.Data.IDAO;
+using ABCLogistics.Data.BEANS;
 
 namespace ABCLogistics.Data.DAO
 {
@@ -28,7 +29,7 @@ namespace ABCLogistics.Data.DAO
         }
 
         // READ ======================================================================
-        // getTrackings
+        // getTrackings : Returns IList of all trackings of type OrderBEAN.
         public IList<Tracking> getTrackings()
         {
             IQueryable<Tracking> _trackings;

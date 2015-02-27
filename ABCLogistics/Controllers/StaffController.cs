@@ -10,63 +10,19 @@ using ABCLogistics.Models;
 
 namespace ABCLogistics.Controllers
 {
-
-    public class OrderController : ApplicationController
+    
+    public class StaffController : ApplicationController
     {
 
         // CREATE ===================================================================
-        // AddParcel
-        [HttpGet] [Authorize(Roles = "Customer")]
-        public ActionResult AddParcel()
-        {
 
-            return View();
-        }
-
-        [HttpPost] [Authorize(Roles = "Customer")]
-        public ActionResult AddParcel(Parcel parcel)
-        {
-            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            ApplicationUser user = userManager.FindByIdAsync(User.Identity.GetUserId()).Result;
-            var currentUser = userManager.FindById(User.Identity.GetUserId());
-            parcel.Customer = currentUser.Id;
-            _parcelService.addParcel(parcel);
-            return RedirectToAction("Parcels", "Order");
-        }
-
-        // AddTracking
-        [HttpGet] [Authorize(Roles = "Customer")]
-        public ActionResult AddTracking(int order)
-        {
-            return View();
-        }
-
-        [HttpPost] [Authorize(Roles = "Customer")]
-        public ActionResult AddTracking(Tracking tracking)
-        {
-            View();
-            _trackingService.addTracking(tracking);
-            return RedirectToAction("Parcels", "Order");
-        }
 
         // READ =====================================================================
-        // Parcels
-        [HttpGet] [Authorize(Roles = "Customer")]
-        public ActionResult Parcels()
+        // AllParcels
+        [Authorize(Roles="Staff")]
+        public ActionResult AllParcels()
         {
-            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            ApplicationUser user = userManager.FindByIdAsync(User.Identity.GetUserId()).Result;
-            var currentUser = userManager.FindById(User.Identity.GetUserId());
-            var currentUserID = currentUser.Id;
-            var customer = currentUserID;
-            return View(_parcelService.getCustomerParcels(customer));
-        }
-       
-        // Track : Returns IList of Tracking of a specific order. (getOrderTrackings)
-        [Authorize(Roles = "Customer")]
-        public ActionResult Track(int order)
-        {
-            return View(_trackingService.getOrderTrackings(order));
+            return View(_parcelService.getParcels());
         }
 
         // UPDATE ===================================================================

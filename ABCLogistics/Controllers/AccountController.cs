@@ -18,11 +18,9 @@ namespace ABCLogistics.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        //public ABCLogistics.Services.Service.UserService _userService;
 
         public AccountController()
         {
-            //_userService = new ABCLogistics.Services.Service.UserService();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -166,15 +164,8 @@ namespace ABCLogistics.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                    //ABCLogistics.Data.User _user = new ABCLogistics.Data.User()
-                    //{
-                    //    EmailAddress = User.Identity.GetUserName(),
-                    //    SystemID = User.Identity.GetUserId()
-                    //};
-                    //_userService.addUser(_user);
-
-                    //UserManager.AddToRole(user.Id, "Customer");
+                    
+                    UserManager.AddToRole(user.Id, "Customer");
 
                     return RedirectToAction("Index", "Home");
                 }

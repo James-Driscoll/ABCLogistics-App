@@ -35,7 +35,7 @@ namespace ABCLogistics.Data.DAO
         {
             IQueryable<Parcel> _parcels;
             _parcels = from Parcel
-                          in _context.Parcels
+                       in _context.Parcels
                        select Parcel;
             return _parcels.ToList<Parcel>();
         }
