@@ -17,30 +17,7 @@
         <div class="col-md-12 well text-center">
             <h1>Orders</h1>
             <p>This is the list of all stored orders.</p>
-            @Html.ActionLink("Orders", "getOrders", "Customer")
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-3 text-center">
-            <h2>Addresses</h2>
-            <p>List of all the stored addresses.</p>
-            @Html.ActionLink("Addresses", "getAddresses", "Customer")
-        </div>
-        <div class="col-md-3 text-center">
-            <h2>Items</h2>
-            <p>This is the list of all the stored items.</p>
-            @Html.ActionLink("Items", "getItems", "Customer")
-        </div>
-        <div class="col-md-3 text-center">
-            <h2>Users</h2>
-            <p>This is the list of all the stored users.</p>
-            @Html.ActionLink("Users", "getUsers", "Admin")
-        </div>
-        <div class="col-md-3 text-center">
-            <h2>Tracking</h2>
-            <p>This is the list of all the stored trackings.</p>
-            @Html.ActionLink("Trackings", "getTrackings", "Customer")
+            @Html.ActionLink("See your Parcels", "Parcels", "Order")
         </div>
     </div>
 

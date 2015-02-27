@@ -23,10 +23,10 @@ namespace ABCLogistics.Services.Service
 
         // CREATE ===================================================================
         // addParcel
-        //public void addParcel(Parcel parcel)
-        //{
-        //    _parcelDAO.addParcel(parcel);
-        //}
+        public void addParcel(Parcel parcel)
+        {
+            _parcelDAO.addParcel(parcel);
+        }
 
         // READ =====================================================================
         // getParcels : Returns IList of all parcels of type Parcel.

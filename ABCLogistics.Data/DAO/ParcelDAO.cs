@@ -23,23 +23,11 @@ namespace ABCLogistics.Data.DAO
 
         // CREATE ====================================================================
         // addParcel : Method to add a new Parcel to the database.
-        //public void addParcel(ABCLogistics.Data.BEANS.OrderBEAN orderBEAN)
-        //{
-        //    IQueryable<User> _user;
-        //    _user = from customer
-        //            in _context.Users
-        //            where customer.SystemID = 
-            
-        //    Parcel parcel = new Parcel {
-        //    Id = orderBEAN.Id,
-        //    Weight = orderBEAN.Weight,
-        //    Insured = orderBEAN.Insured,
-        //    DateOrdered = orderBEAN.DateOrdered,
-        //    Customer = 
-        //}
-        //    _context.Parcels.Add(parcel);
-        //    _context.SaveChanges();
-        //}
+        public void addParcel(Parcel parcel)
+        {
+            _context.Parcels.Add(parcel);
+            _context.SaveChanges();
+        }
 
         // READ ======================================================================
         // getParcels : Returns IList of all parcels of type Parcel.

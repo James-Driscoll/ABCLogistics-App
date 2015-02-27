@@ -12,7 +12,7 @@ namespace ABCLogistics.Data.IDAO
 
         // CREATE ====================================================================
         // addParcel
-        //void addParcel(Parcel parcel);
+        void addParcel(Parcel parcel);
 
         // READ ======================================================================
         // getParcels : Returns IList of all parcels of type Parcel.

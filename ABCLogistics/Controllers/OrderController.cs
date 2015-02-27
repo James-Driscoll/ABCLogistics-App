@@ -24,14 +24,16 @@ namespace ABCLogistics.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult AddParcel()
-        //{
-        //    View();
-        //    _parcelService.addParcel(parcel);
-        //    var currentUser = User.Identity.GetUserId();
-        //    return RedirectToAction("Parcels", "Order");
-        //}
+        [HttpPost]
+        public ActionResult AddParcel(Parcel parcel)
+        {
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            ApplicationUser user = userManager.FindByIdAsync(User.Identity.GetUserId()).Result;
+            var currentUser = userManager.FindById(User.Identity.GetUserId());
+            parcel.Customer = currentUser.Id;
+            _parcelService.addParcel(parcel);
+            return RedirectToAction("Parcels", "Order");
+        }
 
         // AddTracking
         [HttpGet]

@@ -256,6 +256,7 @@
     <Content Include="Views\Admin\manageUserRoles.cshtml" />
     <Content Include="Views\Order\Parcels.cshtml" />
     <Content Include="Views\Order\Track.cshtml" />
+    <Content Include="Views\Order\AddParcel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
