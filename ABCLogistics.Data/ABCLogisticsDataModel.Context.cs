@@ -28,7 +28,5 @@ namespace ABCLogistics.Data
         public virtual DbSet<Tracking> Trackings { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Parcel> Parcels { get; set; }
-
-        public System.Data.Entity.DbSet<ABCLogistics.Data.BEANS.OrderBEAN> OrderBEANs { get; set; }
     }
 }

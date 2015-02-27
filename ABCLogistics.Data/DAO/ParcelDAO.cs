@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ABCLogistics.Data.IDAO;
 using ABCLogistics.Data.BEANS;
 
+
 namespace ABCLogistics.Data.DAO
 {
     
@@ -21,12 +22,24 @@ namespace ABCLogistics.Data.DAO
         }
 
         // CREATE ====================================================================
-        // addParcel
-        public void addParcel(Parcel parcel)
-        {
-            _context.Parcels.Add(parcel);
-            _context.SaveChanges();
-        }
+        // addParcel : Method to add a new Parcel to the database.
+        //public void addParcel(ABCLogistics.Data.BEANS.OrderBEAN orderBEAN)
+        //{
+        //    IQueryable<User> _user;
+        //    _user = from customer
+        //            in _context.Users
+        //            where customer.SystemID = 
+            
+        //    Parcel parcel = new Parcel {
+        //    Id = orderBEAN.Id,
+        //    Weight = orderBEAN.Weight,
+        //    Insured = orderBEAN.Insured,
+        //    DateOrdered = orderBEAN.DateOrdered,
+        //    Customer = 
+        //}
+        //    _context.Parcels.Add(parcel);
+        //    _context.SaveChanges();
+        //}
 
         // READ ======================================================================
         // getParcels : Returns IList of all parcels of type Parcel.
@@ -40,20 +53,18 @@ namespace ABCLogistics.Data.DAO
         }
 
         // getCustomerParcels : Returns IList of OrderBEAN parcels for a specific customer.
-        public IList<ABCLogistics.Data.BEANS.OrderBEAN> getCustomerParcels(int customer)
-        {       
+        public IList<ABCLogistics.Data.BEANS.OrderBEAN> getCustomerParcels(string customer)
+        {
             IQueryable<OrderBEAN> _orderBEANs;
             _orderBEANs = from parcel in _context.Parcels
-                          from user in _context.Users
-                          where parcel.Customer == user.Id
-                          where user.Id == customer
+                          where parcel.Customer == customer
                           select new OrderBEAN
                           {
                               Id = parcel.Id,
                               Weight = parcel.Weight,
                               Insured = parcel.Insured,
                               DateOrdered = parcel.DateOrdered,
-                              CustomerName = user.Name
+                              CustomerName = parcel.Customer
                           };
             return _orderBEANs.ToList<OrderBEAN>();
         }

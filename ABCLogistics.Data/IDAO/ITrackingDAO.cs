@@ -18,7 +18,7 @@ namespace ABCLogistics.Data.IDAO
         // getTrackings
         IList<Tracking> getTrackings();
 
-        // getOrderTrackings
+        // getOrderTrackings : Returns IList of Tracking of a specific order.
         IList<Tracking> getOrderTrackings(int order);
 
         // getTracking

@@ -22,9 +22,9 @@ namespace ABCLogistics.Services.Service
 
         // CREATE ===================================================================
         // addUser
-        public void addUser(User user)
+        public void addUser(User _user)
         {
-            _UserDAO.addUser(user);
+            _UserDAO.addUser(_user);
         }
 
         // READ =====================================================================

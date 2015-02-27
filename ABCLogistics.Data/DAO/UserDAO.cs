@@ -21,9 +21,9 @@ namespace ABCLogistics.Data.DAO
 
         // CREATE ====================================================================
         // addUser
-        public void addUser(User user)
+        public void addUser(User _user)
         {
-            _context.Users.Add(user);
+            _context.Users.Add(_user);
             _context.SaveChanges();
         }
 
@@ -60,6 +60,7 @@ namespace ABCLogistics.Data.DAO
             record.Name = user.Name;
             record.ContactNumber = user.ContactNumber;
             record.EmailAddress = user.EmailAddress;
+            record.SystemID = user.SystemID;
             _context.SaveChanges();
         }
 

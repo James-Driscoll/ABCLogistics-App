@@ -4,27 +4,34 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ABCLogistics.Data;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
+using ABCLogistics.Models;
 
 namespace ABCLogistics.Controllers
 {
     public class OrderController : ApplicationController
     {
 
+
+
         // CREATE ===================================================================
         // AddParcel
         [HttpGet]
         public ActionResult AddParcel()
         {
+
             return View();
         }
 
-        [HttpPost]
-        public ActionResult AddParcel(Parcel parcel)
-        {
-            View();
-            _parcelService.addParcel(parcel);
-            return RedirectToAction("Parcels", "Order");
-        }
+        //[HttpPost]
+        //public ActionResult AddParcel()
+        //{
+        //    View();
+        //    _parcelService.addParcel(parcel);
+        //    var currentUser = User.Identity.GetUserId();
+        //    return RedirectToAction("Parcels", "Order");
+        //}
 
         // AddTracking
         [HttpGet]
@@ -43,8 +50,13 @@ namespace ABCLogistics.Controllers
 
         // READ =====================================================================
         // Parcels
-        public ActionResult Parcels(int customer)
+        public ActionResult Parcels()
         {
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            ApplicationUser user = userManager.FindByIdAsync(User.Identity.GetUserId()).Result;
+            var currentUser = userManager.FindById(User.Identity.GetUserId());
+            var currentUserID = currentUser.Id;
+            var customer = currentUserID;
             return View(_parcelService.getCustomerParcels(customer));
         }
 
@@ -56,6 +68,12 @@ namespace ABCLogistics.Controllers
 
         // Trackings
         public ActionResult Trackings(int order)
+        {
+            return View(_trackingService.getOrderTrackings(order));
+        }
+
+        // Track : Returns IList of Tracking of a specific order. (getOrderTrackings)
+        public ActionResult Track(int order)
         {
             return View(_trackingService.getOrderTrackings(order));
         }

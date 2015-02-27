@@ -23,10 +23,10 @@ namespace ABCLogistics.Services.Service
 
         // CREATE ===================================================================
         // addParcel
-        public void addParcel(Parcel parcel)
-        {
-            _parcelDAO.addParcel(parcel);
-        }
+        //public void addParcel(Parcel parcel)
+        //{
+        //    _parcelDAO.addParcel(parcel);
+        //}
 
         // READ =====================================================================
         // getParcels : Returns IList of all parcels of type Parcel.
@@ -36,7 +36,7 @@ namespace ABCLogistics.Services.Service
         }
         
         // getCustomerParcels : Returns IList of OrderBEAN parcels for a specific customer.
-        public IList<ABCLogistics.Data.BEANS.OrderBEAN> getCustomerParcels(int customer)
+        public IList<ABCLogistics.Data.BEANS.OrderBEAN> getCustomerParcels(string customer)
         {
             return _parcelDAO.getCustomerParcels(customer);
         }

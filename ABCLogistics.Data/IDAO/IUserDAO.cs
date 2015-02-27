@@ -23,7 +23,7 @@ namespace ABCLogistics.Data.IDAO
 
         // UPDATE ====================================================================
         // editUser
-        void editUser(User user);
+        void editUser(User _user);
 
         // DELETE ====================================================================
         // deleteUser

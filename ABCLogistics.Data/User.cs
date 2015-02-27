@@ -18,5 +18,6 @@ namespace ABCLogistics.Data
         public string Name { get; set; }
         public string ContactNumber { get; set; }
         public string EmailAddress { get; set; }
+        public string SystemID { get; set; }
     }
 }

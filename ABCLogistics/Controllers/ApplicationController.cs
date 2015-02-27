@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using ABCLogistics.Data;
 using ABCLogistics.Services;
 using ABCLogistics.Controllers;
+using ABCLogistics.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ABCLogistics.Controllers
 {
@@ -29,9 +32,7 @@ namespace ABCLogistics.Controllers
             _parcelService = new ABCLogistics.Services.Service.ParcelService();
             _trackingService = new ABCLogistics.Services.Service.TrackingService();
             _userService = new ABCLogistics.Services.Service.UserService();
-
             //ViewBag.Items = _itemService.getItems();
-
         }
 
     }

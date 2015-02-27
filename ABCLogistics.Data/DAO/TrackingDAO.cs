@@ -33,18 +33,18 @@ namespace ABCLogistics.Data.DAO
         {
             IQueryable<Tracking> _trackings;
             _trackings = from tracking
-                     in _context.Trackings
+                         in _context.Trackings
                          select tracking;
             return _trackings.ToList<Tracking>();
         }
 
-        // getOrderTrackings
+        // getOrderTrackings : Returns IList of Tracking of a specific order.
         public IList<Tracking> getOrderTrackings(int order)
         {
             IQueryable<Tracking> _trackings;
             _trackings = from tracking
                          in _context.Trackings
-                         where tracking.FK_OrderID == order
+                         where tracking.Order == order
                          select tracking;
             return _trackings.ToList<Tracking>();
         }
@@ -68,7 +68,7 @@ namespace ABCLogistics.Data.DAO
                               in _context.Trackings
                                where rec.Id == tracking.Id
                                select rec).ToList<Tracking>().First();
-            record.FK_OrderID = tracking.FK_OrderID;
+            record.Order = tracking.Order;
             record.Location = tracking.Location;
             record.Date = tracking.Date;
             record.Status = tracking.Status;

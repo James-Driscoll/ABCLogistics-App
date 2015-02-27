@@ -168,6 +168,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502191608078_InitialCreate.cs" />
+    <Compile Include="Migrations\201502191608078_InitialCreate.Designer.cs">
+      <DependentUpon>201502191608078_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502270058215_Birthdate.cs" />
+    <Compile Include="Migrations\201502270058215_Birthdate.Designer.cs">
+      <DependentUpon>201502270058215_Birthdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502270150135_User fields.cs" />
+    <Compile Include="Migrations\201502270150135_User fields.Designer.cs">
+      <DependentUpon>201502270150135_User fields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502270153250_Fields.cs" />
+    <Compile Include="Migrations\201502270153250_Fields.Designer.cs">
+      <DependentUpon>201502270153250_Fields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -238,6 +255,7 @@
     <Content Include="Views\Admin\getRolesForUserConfirmed.cshtml" />
     <Content Include="Views\Admin\manageUserRoles.cshtml" />
     <Content Include="Views\Order\Parcels.cshtml" />
+    <Content Include="Views\Order\Track.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -260,6 +278,20 @@
       <Project>{ad9d8b84-28b1-4b10-a1c3-9b337782cb08}</Project>
       <Name>ABCLogistics.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201502191608078_InitialCreate.resx">
+      <DependentUpon>201502191608078_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502270058215_Birthdate.resx">
+      <DependentUpon>201502270058215_Birthdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502270150135_User fields.resx">
+      <DependentUpon>201502270150135_User fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502270153250_Fields.resx">
+      <DependentUpon>201502270153250_Fields.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

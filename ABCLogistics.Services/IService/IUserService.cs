@@ -13,7 +13,7 @@ namespace ABCLogistics.Services.IService
 
         // CREATE ===================================================================
         // addUser
-        void addUser(User user);
+        void addUser(User _user);
 
         // READ =====================================================================
         // getUsers

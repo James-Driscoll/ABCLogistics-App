@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ABCLogistics.Models;
+using ABCLogistics.Data;
 
 namespace ABCLogistics.Controllers
 {
@@ -17,9 +18,11 @@ namespace ABCLogistics.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        //public ABCLogistics.Services.Service.UserService _userService;
 
         public AccountController()
         {
+            //_userService = new ABCLogistics.Services.Service.UserService();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -151,17 +154,27 @@ namespace ABCLogistics.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, BirthDate = model.BirthDate };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    //ABCLogistics.Data.User _user = new ABCLogistics.Data.User()
+                    //{
+                    //    EmailAddress = User.Identity.GetUserName(),
+                    //    SystemID = User.Identity.GetUserId()
+                    //};
+                    //_userService.addUser(_user);
+
+                    //UserManager.AddToRole(user.Id, "Customer");
 
                     return RedirectToAction("Index", "Home");
                 }
