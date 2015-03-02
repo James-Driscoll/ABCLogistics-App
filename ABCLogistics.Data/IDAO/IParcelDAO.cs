@@ -19,7 +19,7 @@ namespace ABCLogistics.Data.IDAO
         IList<Parcel> getParcels();
 
         // getCustomerParcels : Returns IList of OrderBEAN parcels for a specific customer.
-        IList<ABCLogistics.Data.BEANS.OrderBEAN> getCustomerParcels(string customer);
+        IList<Parcel> getCustomerParcels(string customer);
 
         // getParcel
         Parcel getParcel(int id);

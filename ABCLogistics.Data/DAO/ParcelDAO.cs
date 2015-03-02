@@ -41,21 +41,17 @@ namespace ABCLogistics.Data.DAO
         }
 
         // getCustomerParcels : Returns IList of OrderBEAN parcels for a specific customer.
-        public IList<ABCLogistics.Data.BEANS.OrderBEAN> getCustomerParcels(string customer)
+        public IList<Parcel> getCustomerParcels(string customer)
         {
-            IQueryable<OrderBEAN> _orderBEANs;
-            _orderBEANs = from parcel in _context.Parcels
-                          where parcel.Customer == customer
-                          select new OrderBEAN
-                          {
-                              Id = parcel.Id,
-                              Weight = parcel.Weight,
-                              Insured = parcel.Insured,
-                              DateOrdered = parcel.DateOrdered,
-                              CustomerName = parcel.Customer
-                          };
-            return _orderBEANs.ToList<OrderBEAN>();
+            IQueryable<Parcel> _parcels;
+            _parcels = from parcel in _context.Parcels
+                       where parcel.Customer == customer
+                       select parcel;
+            return _parcels.ToList<Parcel>();
         }
+
+        // getStaffParcels : Returns IList of OrderBEAN parcels for all customers.
+        //public IList
 
         // getParcel
         public Parcel getParcel(int id)

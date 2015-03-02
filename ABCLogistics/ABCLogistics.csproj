@@ -255,11 +255,11 @@
     <Content Include="Views\Admin\getRolesForUser.cshtml" />
     <Content Include="Views\Admin\getRolesForUserConfirmed.cshtml" />
     <Content Include="Views\Admin\manageUserRoles.cshtml" />
-    <Content Include="Views\Order\Parcels.cshtml" />
     <Content Include="Views\Order\Track.cshtml" />
     <Content Include="Views\Order\AddParcel.cshtml" />
     <Content Include="Views\Order\AllParcels.cshtml" />
     <Content Include="Views\Staff\AllParcels.cshtml" />
+    <Content Include="Views\Order\Parcels.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
