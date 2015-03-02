@@ -23,6 +23,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Customer)
         </th>
+        <th>
+            Track
+        </th>
         <th></th>
     </tr>
 
@@ -39,6 +42,9 @@
         </td>
         <td>
             <a href="@Url.Action("CustomerDetails", new { customer = item.Customer })"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+        </td>
+        <td>
+            <a href="@Url.Action("TrackOrder", new { order = item.Id })"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></a>
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

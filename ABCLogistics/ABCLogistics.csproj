@@ -263,6 +263,7 @@
     <Content Include="Views\Staff\CustomerDetails.cshtml" />
     <Content Include="Views\Staff\CreateParcel.cshtml" />
     <Content Include="Views\Staff\AddParcelTracking.cshtml" />
+    <Content Include="Views\Staff\TrackOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

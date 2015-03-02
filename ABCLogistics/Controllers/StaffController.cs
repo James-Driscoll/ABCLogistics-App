@@ -92,6 +92,13 @@ namespace ABCLogistics.Controllers
             return View();
         }
 
+        // TrackOrder : Returns IList of Tracking of a specific order. (getOrderTrackings)
+        [Authorize(Roles = "Customer")]
+        public ActionResult TrackOrder(int order)
+        {
+            return View(_trackingService.getOrderTrackings(order));
+        }
+
         // UPDATE ===================================================================
         // EditParcel : Method for editting the details of a particular parcel.
         [HttpGet]
