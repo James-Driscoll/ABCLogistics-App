@@ -23,24 +23,58 @@ namespace ABCLogistics.Controllers
             _context = new ABCLogistics.Models.ApplicationDbContext();
         }
         
-        
         // CREATE ===================================================================
+        // CreateParcel : Creates a new parcel.
+        [HttpGet]
+        public ActionResult CreateParcel()
+        {
+            // populates user list for the view drop down menu.
+            List<SelectListItem> userList = new List<SelectListItem>();
+            foreach (var item in _context.Users.ToList())
+            {
+                userList.Add(
+                    new SelectListItem()
+                    {
+                        Text = item.FirstName + " " + item.LastName + " | " + item.UserName,
+                        Value = item.Id.ToString()
+                        //Selected = (item.UserName == (selectedUser) ? true : false)
+                    });
+            }
+            ViewBag.userList = userList;
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult CreateParcel(Parcel parcel)
+        {
+            _parcelService.addParcel(parcel);
+            return RedirectToAction("AllParcels");
+        }
 
         // READ =====================================================================
         // AllParcels : Lists details of all parcels.
         //[Authorize(Roles="Staff")]
         public ActionResult AllParcels()
         {
-            //var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            //ApplicationUser user = userManager.FindByIdAsync(User.Identity.GetUserId()).Result;
-            //var userList = _context.Users.ToList();
-            var parcelList = _parcelService.getParcels();
-
-            var parcelListSize = parcelList.Count();
-            ViewBag.ParcelListSize = parcelListSize;
-
             return View(_parcelService.getParcels());
+        }
+
+        // CustomerDetails : Returns details about one specific customer profile.
+        public ActionResult CustomerDetails(string customer)
+        {
+            //var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            //ApplicationUser user = userManager.FindByIdAsync(customer).Result;
+            //return View(customer);
+
+            //IQueryable<ApplicationUser> _users;
+            //_users = from users
+            //         in _context.Users
+            //         where users.Id == customer
+            //         select users;
+            //_users.ToString().First();
+            //return View(_users);
+
+            return View();
         }
 
         // UPDATE ===================================================================

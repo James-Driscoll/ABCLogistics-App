@@ -32,6 +32,7 @@ namespace ABCLogistics.Controllers
             _parcelService = new ABCLogistics.Services.Service.ParcelService();
             _trackingService = new ABCLogistics.Services.Service.TrackingService();
             _userService = new ABCLogistics.Services.Service.UserService();
+
             //ViewBag.Items = _itemService.getItems();
         }
 
