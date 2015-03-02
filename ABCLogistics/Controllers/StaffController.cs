@@ -51,6 +51,21 @@ namespace ABCLogistics.Controllers
             return RedirectToAction("AllParcels");
         }
 
+        // AddParcelTracking : Adds tracking details about a specific parcel.
+        [HttpGet]
+        public ActionResult AddParcelTracking(int order)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddParcelTracking(Tracking tracking)
+        {
+            View();
+            _trackingService.addTracking(tracking);
+            return RedirectToAction("AllParcels", "Staff");
+        }
+
         // READ =====================================================================
         // AllParcels : Lists details of all parcels.
         //[Authorize(Roles="Staff")]
@@ -78,7 +93,7 @@ namespace ABCLogistics.Controllers
         }
 
         // UPDATE ===================================================================
-        // EditParcel
+        // EditParcel : Method for editting the details of a particular parcel.
         [HttpGet]
         public ActionResult EditParcel(int id)
         {
