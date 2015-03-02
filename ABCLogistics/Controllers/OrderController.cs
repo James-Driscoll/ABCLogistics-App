@@ -16,14 +16,14 @@ namespace ABCLogistics.Controllers
 
         // CREATE ===================================================================
         // AddParcel
-        [HttpGet] [Authorize(Roles = "Customer")]
+        [HttpGet] [Authorize(Roles="Customer")]
         public ActionResult AddParcel()
         {
 
             return View();
         }
 
-        [HttpPost] [Authorize(Roles = "Customer")]
+        [HttpPost] [Authorize(Roles="Customer")]
         public ActionResult AddParcel(Parcel parcel)
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
@@ -35,13 +35,13 @@ namespace ABCLogistics.Controllers
         }
 
         // AddTracking
-        [HttpGet] [Authorize(Roles = "Customer")]
+        [HttpGet] [Authorize(Roles="Customer")]
         public ActionResult AddTracking(int order)
         {
             return View();
         }
 
-        [HttpPost] [Authorize(Roles = "Customer")]
+        [HttpPost] [Authorize(Roles="Customer")]
         public ActionResult AddTracking(Tracking tracking)
         {
             View();
@@ -51,7 +51,7 @@ namespace ABCLogistics.Controllers
 
         // READ =====================================================================
         // Parcels
-        [HttpGet] [Authorize(Roles = "Customer")]
+        [HttpGet] [Authorize(Roles="Customer")]
         public ActionResult Parcels()
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
@@ -63,7 +63,7 @@ namespace ABCLogistics.Controllers
         }
        
         // Track : Returns IList of Tracking of a specific order. (getOrderTrackings)
-        [Authorize(Roles = "Customer")]
+        [Authorize(Roles="Customer")]
         public ActionResult Track(int order)
         {
             return View(_trackingService.getOrderTrackings(order));
