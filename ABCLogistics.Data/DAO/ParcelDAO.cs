@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using ABCLogistics.Data.IDAO;
 using ABCLogistics.Data.BEANS;
 
-
 namespace ABCLogistics.Data.DAO
 {
     
@@ -49,9 +48,6 @@ namespace ABCLogistics.Data.DAO
                        select parcel;
             return _parcels.ToList<Parcel>();
         }
-
-        // getStaffParcels : Returns IList of OrderBEAN parcels for all customers.
-        //public IList
 
         // getParcel
         public Parcel getParcel(int id)

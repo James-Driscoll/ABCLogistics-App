@@ -14,14 +14,32 @@ namespace ABCLogistics.Controllers
     public class StaffController : ApplicationController
     {
 
+        // Framework class for managing authorisation.
+        private ABCLogistics.Models.ApplicationDbContext _context;
+
+        // CONSTRUCTOR ==============================================================
+        public StaffController()
+        {
+            _context = new ABCLogistics.Models.ApplicationDbContext();
+        }
+        
+        
         // CREATE ===================================================================
 
 
         // READ =====================================================================
-        // AllParcels
-        [Authorize(Roles="Staff")]
+        // AllParcels : Lists details of all parcels.
+        //[Authorize(Roles="Staff")]
         public ActionResult AllParcels()
         {
+            //var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            //ApplicationUser user = userManager.FindByIdAsync(User.Identity.GetUserId()).Result;
+            //var userList = _context.Users.ToList();
+            var parcelList = _parcelService.getParcels();
+
+            var parcelListSize = parcelList.Count();
+            ViewBag.ParcelListSize = parcelListSize;
+
             return View(_parcelService.getParcels());
         }
 

@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<ABCLogistics.Data.Parcel>
 
 @{
-    ViewBag.Title = "All Parcels";
+    ViewBag.Title = "AllParcels";
 }
 
-<h2>All Parcels</h2>
-
+<h2>AllParcels</h2>
+<h3>@ViewBag.ParcelListSize</h3>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -38,7 +38,7 @@
             @Html.DisplayFor(modelItem => item.DateOrdered)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Customer)
+            <a href="@Url.Action("CustomerDetails", new { id = item.Customer })"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
