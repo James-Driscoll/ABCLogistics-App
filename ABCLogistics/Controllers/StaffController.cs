@@ -172,7 +172,7 @@ namespace ABCLogistics.Controllers
             {
                 Parcel _parcel = _parcelService.getParcel(id);
                 _parcelService.deleteParcel(_parcel);
-                return RedirectToAction("Parcels", "Order");
+                return RedirectToAction("AllParcels", "Staff");
             }
             catch
             {

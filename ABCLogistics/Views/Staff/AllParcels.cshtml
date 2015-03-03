@@ -7,7 +7,7 @@
 <h2>AllParcels</h2>
 <h3>@ViewBag.ParcelListSize</h3>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add New Parcel", "CreateParcel")
 </p>
 <table class="table">
     <tr>
@@ -48,8 +48,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "EditParcel", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "DeleteParcel", new { id = item.Id }) |
             @Html.ActionLink("Add Tracking", "AddParcelTracking", new { order = item.Id })
         </td>
     </tr>
