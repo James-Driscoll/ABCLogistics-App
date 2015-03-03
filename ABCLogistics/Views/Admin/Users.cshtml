@@ -1,8 +1,8 @@
 ﻿@{
-    ViewBag.Title = "Registered Users";
+    ViewBag.Title = "Users";
 }
 
-<h2>Registered Users</h2>
+<h2>Users</h2>
 
 @foreach (var user in Model)
 {
@@ -14,3 +14,7 @@
     </p>
 }
 @Html.ActionLink("Add User", "Register", new { controller = "Account" })
+
+<div>
+    @Html.ActionLink("Back to Admin Control Panel", "ControlPanel")
+</div>

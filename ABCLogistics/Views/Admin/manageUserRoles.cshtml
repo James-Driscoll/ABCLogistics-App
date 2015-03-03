@@ -4,15 +4,17 @@
 
 <h2>Manage User Roles</h2>
 
-@using (Html.BeginForm("manageUserRoles", "Admin"))
+@using (Html.BeginForm("ManageUserRoles", "Admin"))
 {
     @Html.AntiForgeryToken();
     @Html.ValidationSummary(true)
     <p>
-        User Username: @Html.DropDownList("userName",
-            (IEnumerable<SelectListItem>)ViewBag.Users, "Select...")
-        Role Name: @Html.DropDownList("roleName",
-            (IEnumerable<SelectListItem>)ViewBag.Roles, "Select...")
+        Username: @Html.DropDownList("userName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select...")
+        Role Name: @Html.DropDownList("roleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select...")
     </p>
-    <input type="submit" value="Save" />
+    <input class="btn btn-primary" type="submit" value="Save" />
 }
+
+<div>
+    @Html.ActionLink("Back to Admin Control Panel", "ControlPanel")
+</div>

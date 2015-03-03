@@ -65,6 +65,19 @@ namespace ABCLogistics.Controllers
         [HttpGet]
         public ActionResult RolesForUser()
         {
+            // populates user list for the view drop down menu.
+            List<SelectListItem> userList = new List<SelectListItem>();
+            foreach (var item in _context.Users.ToList())
+            {
+                userList.Add(
+                    new SelectListItem()
+                    {
+                        Text = item.FirstName + " " + item.LastName + " | " + item.UserName,
+                        Value = item.UserName
+                        //Selected = (item.UserName == (selectedUser) ? true : false)
+                    });
+            }
+            ViewBag.userList = userList;
             return View();
         }
 
@@ -74,17 +87,15 @@ namespace ABCLogistics.Controllers
         {
             if (!string.IsNullOrWhiteSpace(userName))
             {
-                ApplicationUser user = _context.Users.Where(u => u.UserName.Equals(
-                    userName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
-                var um = new UserManager<ApplicationUser>(
-                    new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(_context));
+                ApplicationUser user = _context.Users.Where(u => u.UserName.Equals(userName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+                var um = new UserManager<ApplicationUser>( new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(_context));
                 ViewBag.RolesForThisUser = um.GetRoles(user.Id);
             }
             return View("RolesForUserConfirmed");
         }
 
         // UPDATE =============================================================
-        // manageUserRoles : Allows Admin to manage the roles associate with a particular user.
+        // ManageUserRoles : Allows Admin to manage the roles associate with a particular user.
         [HttpGet]
         public ActionResult ManageUserRoles()
         {
