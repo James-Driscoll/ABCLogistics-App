@@ -47,7 +47,7 @@
             <a href="@Url.Action("TrackOrder", new { order = item.Id })"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></a>
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Edit", "EditParcel", new { id = item.Id }) |
             @Html.ActionLink("Details", "Details", new { id = item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
             @Html.ActionLink("Add Tracking", "AddParcelTracking", new { order = item.Id })

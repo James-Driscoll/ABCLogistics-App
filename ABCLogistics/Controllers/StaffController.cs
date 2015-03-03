@@ -11,6 +11,7 @@ using ABCLogistics.Models;
 namespace ABCLogistics.Controllers
 {
     
+    //[Authorize(Roles="Staff")]
     public class StaffController : ApplicationController
     {
 
@@ -68,7 +69,6 @@ namespace ABCLogistics.Controllers
 
         // READ =====================================================================
         // AllParcels : Lists details of all parcels.
-        //[Authorize(Roles="Staff")]
         public ActionResult AllParcels()
         {
             return View(_parcelService.getParcels());
@@ -92,8 +92,7 @@ namespace ABCLogistics.Controllers
             return View();
         }
 
-        // TrackOrder : Returns IList of Tracking of a specific order. (getOrderTrackings)
-        [Authorize(Roles = "Customer")]
+        // TrackOrder : Returns IList of Tracking records of a specific order. (getOrderTrackings)
         public ActionResult TrackOrder(int order)
         {
             return View(_trackingService.getOrderTrackings(order));
@@ -104,6 +103,19 @@ namespace ABCLogistics.Controllers
         [HttpGet]
         public ActionResult EditParcel(int id)
         {
+            // populates user list for the view drop down menu.
+            List<SelectListItem> userList = new List<SelectListItem>();
+            foreach (var item in _context.Users.ToList())
+            {
+                userList.Add(
+                    new SelectListItem()
+                    {
+                        Text = item.FirstName + " " + item.LastName + " | " + item.UserName,
+                        Value = item.Id.ToString()
+                        //Selected = (item.UserName == (selectedUser) ? true : false)
+                    });
+            }
+            ViewBag.userList = userList;
             Parcel record = _parcelService.getParcel(id);
             return View(record);
         }
