@@ -47,8 +47,8 @@
             <a href="@Url.Action("TrackOrder", new { order = item.Id })"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></a>
         </td>
         <td>
-            @Html.ActionLink("Edit", "EditParcel", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "DeleteParcel", new { id = item.Id }) |
+            <a href="@Url.Action("EditParcel", new { id = item.Id })"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> |
+            <a href="@Url.Action("DeleteParcel", new { id = item.Id })"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a> |
             @Html.ActionLink("Add Tracking", "AddParcelTracking", new { order = item.Id })
         </td>
     </tr>
