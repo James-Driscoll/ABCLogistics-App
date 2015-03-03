@@ -4,16 +4,38 @@
 
 <h2>Users</h2>
 
-@foreach (var user in Model)
-{
-    <p>
-        @user.UserName |
-        @Html.ActionLink("Edit", "EditUser", new { id = user.Id }) |
-        @Html.ActionLink("Delete", "DeleteUser", new { id = user.Id })
-
-    </p>
-}
-@Html.ActionLink("Add User", "Register", new { controller = "Account" })
+<table class="table">
+    <tr>
+        <th>First Name</th>
+        <th>Lastname</th>
+        <th>Email / Username</th>
+        <th>Contact Number</th>
+        <th>Address Line 1</th>
+        <th>Address Line 2</th>
+        <th>Town</th>
+        <th>County</th>
+        <th>Postcode</th>
+        <th></th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.FirstName</td>
+            <td>@user.LastName</td>
+            <td>@user.UserName</td>
+            <td>@user.ContactNumber</td>
+            <td>@user.AddressLine1</td>
+            <td>@user.AddressLine2</td>
+            <td>@user.Town</td>
+            <td>@user.County</td>
+            <td>@user.Postcode</td>
+            <td>
+                <a href="@Url.Action("EditUser", new { id = @user.Id })"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> |
+                <a href="@Url.Action("DeleteUser", new { id = @user.Id })"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a> |
+            </td>
+        </tr>
+    }
+</table>
 
 <div>
     @Html.ActionLink("Back to Admin Control Panel", "ControlPanel")
