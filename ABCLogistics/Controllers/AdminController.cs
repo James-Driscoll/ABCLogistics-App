@@ -18,28 +18,29 @@ namespace ABCLogistics.Controllers
 
         private ABCLogistics.Models.ApplicationDbContext _context;
 
+        // CONSTRUCTOR ========================================================
         public AdminController()
         {
             _context = new ABCLogistics.Models.ApplicationDbContext();
         }
 
         // CREATE =============================================================
-        // createRole
+        // CreateRole : Adds a new system role to the database.
         [HttpGet]
-        public ActionResult createRole()
+        public ActionResult CreateRole()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult createRole(FormCollection collection)
+        public ActionResult CreateRole(FormCollection collection)
         {
             try
             {
                 _context.Roles.Add(
                     new IdentityRole() { Name = collection["RoleName"] });
                 _context.SaveChanges();
-                return RedirectToAction("getRoles");
+                return RedirectToAction("Roles");
             }
             catch
             {
@@ -48,22 +49,28 @@ namespace ABCLogistics.Controllers
         }
 
         // READ ===============================================================
-        // getUsers
-        public ActionResult getUsers()
+        // ControlPanel : Returns view containing list of Admin related functions.
+        public ActionResult ControlPanel()
+        {
+            return View();
+        }
+        
+        // getUsers : NO VIEW YET
+        public ActionResult Users()
         {
             return View(_context.Users.ToList());
         }
 
-        // getRolesForUser
+        // RolesForUser : Returns list of roles associated with a particular user.
         [HttpGet]
-        public ActionResult getRolesForUser()
+        public ActionResult RolesForUser()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult getRolesForUser(string userName)
+        public ActionResult RolesForUser(string userName)
         {
             if (!string.IsNullOrWhiteSpace(userName))
             {
@@ -73,13 +80,13 @@ namespace ABCLogistics.Controllers
                     new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(_context));
                 ViewBag.RolesForThisUser = um.GetRoles(user.Id);
             }
-            return View("getRolesForUserConfirmed");
+            return View("RolesForUserConfirmed");
         }
 
         // UPDATE =============================================================
-        // manageUserRoles
+        // manageUserRoles : Allows Admin to manage the roles associate with a particular user.
         [HttpGet]
-        public ActionResult manageUserRoles()
+        public ActionResult ManageUserRoles()
         {
             // populates roles for the view dropdown
             var roleList = _context.Roles.OrderBy(r => r.Name).ToList().Select(rr =>
@@ -95,7 +102,7 @@ namespace ABCLogistics.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult manageUserRoles(string userName, string roleName)
+        public ActionResult ManageUserRoles(string userName, string roleName)
         {
             ApplicationUser user = _context.Users.Where(u => u.UserName.Equals(userName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
             var um = new Microsoft.AspNet.Identity.UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(_context));
@@ -109,7 +116,7 @@ namespace ABCLogistics.Controllers
             var userList = _context.Users.OrderBy(u => u.UserName).ToList().Select(uu => new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
             ViewBag.Users = userList;
 
-            return View("ManageUserRoles");
+            return View();
         }
 
     }
