@@ -55,11 +55,18 @@ namespace ABCLogistics.Controllers
             return View();
         }
         
-        // getUsers : NO VIEW YET
+        // Users : Retunrns list of users.
         public ActionResult Users()
         {
             return View(_context.Users.ToList());
         }
+
+        // Roles : Returns list of system roles.
+        public ActionResult Roles()
+        {
+            return View(_context.Roles.ToList());
+        }
+
 
         // RolesForUser : Returns list of roles associated with a particular user.
         [HttpGet]
@@ -74,7 +81,6 @@ namespace ABCLogistics.Controllers
                     {
                         Text = item.FirstName + " " + item.LastName + " | " + item.UserName,
                         Value = item.UserName
-                        //Selected = (item.UserName == (selectedUser) ? true : false)
                     });
             }
             ViewBag.userList = userList;
@@ -88,13 +94,21 @@ namespace ABCLogistics.Controllers
             if (!string.IsNullOrWhiteSpace(userName))
             {
                 ApplicationUser user = _context.Users.Where(u => u.UserName.Equals(userName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
-                var um = new UserManager<ApplicationUser>( new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(_context));
-                ViewBag.RolesForThisUser = um.GetRoles(user.Id);
+                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(_context));
+                ViewBag.RolesForThisUser = userManager.GetRoles(user.Id);
             }
             return View("RolesForUserConfirmed");
         }
 
         // UPDATE =============================================================
+        // EditRole : Edits the name of an existing system role.
+        public ActionResult EditRole (string id)
+        {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_context));
+            
+            return RedirectToAction("ControlPanel");
+        }
+        
         // ManageUserRoles : Allows Admin to manage the roles associate with a particular user.
         [HttpGet]
         public ActionResult ManageUserRoles()

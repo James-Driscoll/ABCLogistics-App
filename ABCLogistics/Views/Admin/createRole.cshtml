@@ -4,17 +4,13 @@
 
 <h2>Create Role</h2>
 
-@Html.ActionLink("List Roles", "Index") |
-@Html.ActionLink("Manage User Role", "manageUserRoles")
-<hr />
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-    <div>Role Name</div>
+    <div>Enter new role name:</div>
     <p>@Html.TextBox("RoleName")</p>
-    <input type="submit" value="Save" />
+    <input class="btn btn-primary" type="submit" value="Save" />
 }
 
 <div>

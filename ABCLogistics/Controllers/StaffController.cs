@@ -77,19 +77,9 @@ namespace ABCLogistics.Controllers
         // CustomerDetails : Returns details about one specific customer profile.
         public ActionResult CustomerDetails(string customer)
         {
-            //var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            //ApplicationUser user = userManager.FindByIdAsync(customer).Result;
-            //return View(customer);
-
-            //IQueryable<ApplicationUser> _users;
-            //_users = from users
-            //         in _context.Users
-            //         where users.Id == customer
-            //         select users;
-            //_users.ToString().First();
-            //return View(_users);
-
-            return View();
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(_context));
+            var user = userManager.FindById(customer);
+            return View(user);
         }
 
         // TrackOrder : Returns IList of Tracking records of a specific order. (getOrderTrackings)
