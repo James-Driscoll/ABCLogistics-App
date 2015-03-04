@@ -102,7 +102,6 @@ namespace ABCLogistics.Controllers
                     {
                         Text = item.FirstName + " " + item.LastName + " | " + item.UserName,
                         Value = item.Id.ToString()
-                        //Selected = (item.UserName == (selectedUser) ? true : false)
                     });
             }
             ViewBag.userList = userList;
@@ -124,7 +123,7 @@ namespace ABCLogistics.Controllers
             }
         }
 
-        // EditTracking
+        // EditTracking : Method for editting specific details about a tracking record.
         [HttpGet]
         public ActionResult EditTracking(int id)
         {

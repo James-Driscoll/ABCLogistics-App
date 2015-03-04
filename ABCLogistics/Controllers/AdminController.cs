@@ -102,11 +102,27 @@ namespace ABCLogistics.Controllers
 
         // UPDATE =============================================================
         // EditRole : Edits the name of an existing system role.
-        public ActionResult EditRole (string id)
+        [HttpGet]
+        public ActionResult EditRole(string id)
         {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_context));
-            
-            return RedirectToAction("ControlPanel");
+            var role = roleManager.FindById(id);
+            return View(role);
+        }
+
+        [HttpPost]
+        public ActionResult EditRole(IdentityRole role)
+        {
+            try
+            {
+                _context.Entry(role).State = System.Data.Entity.EntityState.Modified;
+                _context.SaveChanges();
+                return RedirectToAction("Roles");
+            }
+            catch
+            {
+                return View();
+            }
         }
         
         // ManageUserRoles : Allows Admin to manage the roles associate with a particular user.

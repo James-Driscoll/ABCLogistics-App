@@ -169,10 +169,9 @@
         <dd>
             @Html.DisplayFor(model => model.UserName)
         </dd>
-
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "AllParcels")
-</p>
+
+<div>
+    @Html.ActionLink("Back to Parcels", "AllParcels")
+</div>
