@@ -49,7 +49,7 @@ namespace ABCLogistics.Controllers
         public ActionResult CreateParcel(Parcel parcel)
         {
             _parcelService.addParcel(parcel);
-            return RedirectToAction("AllParcels");
+            return RedirectToAction("Index");
         }
 
         // AddParcelTracking : Adds tracking details about a specific parcel.
@@ -64,12 +64,12 @@ namespace ABCLogistics.Controllers
         {
             View();
             _trackingService.addTracking(tracking);
-            return RedirectToAction("AllParcels", "Staff");
+            return RedirectToAction("Index", "Staff");
         }
 
         // READ =====================================================================
-        // AllParcels : Lists details of all parcels.
-        public ActionResult AllParcels()
+        // Index : Lists details of all parcels.
+        public ActionResult Index()
         {
             return View(_parcelService.getParcels());
         }
@@ -161,7 +161,7 @@ namespace ABCLogistics.Controllers
             {
                 Parcel _parcel = _parcelService.getParcel(id);
                 _parcelService.deleteParcel(_parcel);
-                return RedirectToAction("AllParcels", "Staff");
+                return RedirectToAction("Index", "Staff");
             }
             catch
             {

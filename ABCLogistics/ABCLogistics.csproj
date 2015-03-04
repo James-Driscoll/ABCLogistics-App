@@ -255,7 +255,7 @@
     <Content Include="Views\Order\Track.cshtml" />
     <Content Include="Views\Order\AddParcel.cshtml" />
     <Content Include="Views\Order\AllParcels.cshtml" />
-    <Content Include="Views\Staff\AllParcels.cshtml" />
+    <Content Include="Views\Staff\Index.cshtml" />
     <Content Include="Views\Order\Parcels.cshtml" />
     <Content Include="Views\Staff\CustomerDetails.cshtml" />
     <Content Include="Views\Staff\CreateParcel.cshtml" />
