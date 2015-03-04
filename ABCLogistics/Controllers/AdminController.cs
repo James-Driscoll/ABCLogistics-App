@@ -25,28 +25,7 @@ namespace ABCLogistics.Controllers
         }
 
         // CREATE =============================================================
-        // CreateRole : Adds a new system role to the database.
-        [HttpGet]
-        public ActionResult CreateRole()
-        {
-            return View();
-        }
 
-        [HttpPost]
-        public ActionResult CreateRole(FormCollection collection)
-        {
-            try
-            {
-                _context.Roles.Add(
-                    new IdentityRole() { Name = collection["RoleName"] });
-                _context.SaveChanges();
-                return RedirectToAction("Roles");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         // READ ===============================================================
         // ControlPanel : Returns view containing list of Admin related functions.
@@ -60,13 +39,6 @@ namespace ABCLogistics.Controllers
         {
             return View(_context.Users.ToList());
         }
-
-        // Roles : Returns list of system roles.
-        public ActionResult Roles()
-        {
-            return View(_context.Roles.ToList());
-        }
-
 
         // RolesForUser : Returns list of roles associated with a particular user.
         [HttpGet]
@@ -101,30 +73,6 @@ namespace ABCLogistics.Controllers
         }
 
         // UPDATE =============================================================
-        // EditRole : Edits the name of an existing system role.
-        [HttpGet]
-        public ActionResult EditRole(string id)
-        {
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_context));
-            var role = roleManager.FindById(id);
-            return View(role);
-        }
-
-        [HttpPost]
-        public ActionResult EditRole(IdentityRole role)
-        {
-            try
-            {
-                _context.Entry(role).State = System.Data.Entity.EntityState.Modified;
-                _context.SaveChanges();
-                return RedirectToAction("Roles");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        
         // ManageUserRoles : Allows Admin to manage the roles associate with a particular user.
         [HttpGet]
         public ActionResult ManageUserRoles()
@@ -163,28 +111,7 @@ namespace ABCLogistics.Controllers
         }
 
         // DELETE =============================================================
-        [HttpGet]
-        public ActionResult DeleteRole(string id)
-        {
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_context));
-            var role = roleManager.FindById(id);
-            return View(role);
-        }
-        [HttpPost]
-        public ActionResult DeleteRole(IdentityRole role, string id)
-        {
-            try
-            {
-                var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_context));
-                var _role = roleManager.FindById(id);
-                roleManager.Delete(_role);
-                return RedirectToAction("Roles");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+
 
     }
 

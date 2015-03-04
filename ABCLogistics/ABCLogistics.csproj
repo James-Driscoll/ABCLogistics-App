@@ -165,6 +165,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\RoleAdminController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -246,7 +247,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Admin\CreateRole.cshtml" />
+    <Content Include="Views\RoleAdmin\CreateRole.cshtml" />
     <Content Include="Views\Admin\Users.cshtml" />
     <Content Include="Views\Admin\RolesForUser.cshtml" />
     <Content Include="Views\Admin\RolesForUserConfirmed.cshtml" />
@@ -263,9 +264,9 @@
     <Content Include="Views\Staff\EditParcel.cshtml" />
     <Content Include="Views\Staff\DeleteParcel.cshtml" />
     <Content Include="Views\Admin\ControlPanel.cshtml" />
-    <Content Include="Views\Admin\Roles.cshtml" />
-    <Content Include="Views\Admin\EditRole.cshtml" />
-    <Content Include="Views\Admin\DeleteRole.cshtml" />
+    <Content Include="Views\RoleAdmin\Roles.cshtml" />
+    <Content Include="Views\RoleAdmin\EditRole.cshtml" />
+    <Content Include="Views\RoleAdmin\DeleteRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
