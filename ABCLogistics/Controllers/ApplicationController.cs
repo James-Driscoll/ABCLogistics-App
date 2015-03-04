@@ -33,7 +33,20 @@ namespace ABCLogistics.Controllers
             _trackingService = new ABCLogistics.Services.Service.TrackingService();
             _userService = new ABCLogistics.Services.Service.UserService();
 
-            //ViewBag.Items = _itemService.getItems();
+            var statusList = new SelectList(new[] 
+            {
+                new { ID = "Order Received", Name = "Order Received" },
+                new { ID = "Order Processing", Name = "Order Processing" },
+                new { ID = "Dispatched", Name = "Dispatched" },
+                new { ID = "Being Shipped", Name = "Being Shipped" },
+                new { ID = "Shipped", Name = "Shipped" },
+                new { ID = "Dispatched", Name = "Dispatched" },
+                new { ID = "Delivered", Name = "Delivered" },
+                new { ID = "Complete", Name = "Complete" },
+                new { ID = "Cancelled", Name = "Cancelled" }
+            },
+            "ID", "Name", 1);
+            ViewData["statusList"] = statusList;
         }
 
     }
