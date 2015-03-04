@@ -64,9 +64,9 @@ namespace ABCLogistics.Controllers
        
         // Track : Returns IList of Tracking of a specific order. (getOrderTrackings)
         [Authorize(Roles="Customer")]
-        public ActionResult Track(int order)
+        public ActionResult Track(int id)
         {
-            return View(_trackingService.getOrderTrackings(order));
+            return View(_trackingService.getOrderTrackings(id));
         }
 
         // UPDATE ===================================================================

@@ -16,9 +16,7 @@ namespace ABCLogistics.Controllers
     public class RoleAdminController : Controller
     {
 
-        private ABCLogistics.Models.ApplicationDbContext _context;
-        
-        
+        private ABCLogistics.Models.ApplicationDbContext _context;        
 
         // CONSTRUCTOR ========================================================
         public RoleAdminController()
