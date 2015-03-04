@@ -30,13 +30,13 @@ namespace ABCLogistics.Controllers
         // CREATE =============================================================
         // CreateRole : Adds a new system role to the database.
         [HttpGet]
-        public ActionResult CreateRole()
+        public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult CreateRole(FormCollection collection)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace ABCLogistics.Controllers
         // UPDATE =============================================================
         // EditRole : Edits the name of an existing system role.
         [HttpGet]
-        public ActionResult EditRole(string id)
+        public ActionResult Edit(string id)
         {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_context));
             var role = roleManager.FindById(id);
@@ -68,7 +68,7 @@ namespace ABCLogistics.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditRole(IdentityRole role)
+        public ActionResult Edit(IdentityRole role)
         {
             try
             {
@@ -85,14 +85,14 @@ namespace ABCLogistics.Controllers
         // DELETE =============================================================
         // DeleteRole : Deletes a system role from the database.
         [HttpGet]
-        public ActionResult DeleteRole(string id)
+        public ActionResult Delete(string id)
         {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_context));
             var role = roleManager.FindById(id);
             return View(role);
         }
         [HttpPost]
-        public ActionResult DeleteRole(IdentityRole role, string id)
+        public ActionResult Delete(IdentityRole role, string id)
         {
             try
             {

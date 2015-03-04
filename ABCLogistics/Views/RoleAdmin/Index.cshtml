@@ -5,7 +5,7 @@
 <h2>Roles</h2>
 
 <p>
-    @Html.ActionLink("Create New Role", "CreateRole")
+    @Html.ActionLink("Create New Role", "Create")
 </p>
 
 <table class="table">
@@ -20,8 +20,8 @@
             <td>@role.Name</td>
             <td>@role.Id</td>
             <td>
-                <a href="@Url.Action("EditRole", new { id = @role.Id })"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-                <a href="@Url.Action("DeleteRole", new { id = @role.Id })"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                <a href="@Url.Action("Edit", new { id = @role.Id })"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                <a href="@Url.Action("Delete", new { id = @role.Id })"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
             </td>
         </tr>
     }

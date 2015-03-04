@@ -247,7 +247,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\RoleAdmin\CreateRole.cshtml" />
+    <Content Include="Views\RoleAdmin\Create.cshtml" />
     <Content Include="Views\Admin\Users.cshtml" />
     <Content Include="Views\Admin\RolesForUser.cshtml" />
     <Content Include="Views\Admin\RolesForUserConfirmed.cshtml" />
@@ -265,8 +265,8 @@
     <Content Include="Views\Staff\DeleteParcel.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\RoleAdmin\Index.cshtml" />
-    <Content Include="Views\RoleAdmin\EditRole.cshtml" />
-    <Content Include="Views\RoleAdmin\DeleteRole.cshtml" />
+    <Content Include="Views\RoleAdmin\Edit.cshtml" />
+    <Content Include="Views\RoleAdmin\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
