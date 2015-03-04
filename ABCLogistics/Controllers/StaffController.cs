@@ -25,6 +25,21 @@ namespace ABCLogistics.Controllers
         }
         
         // CREATE ===================================================================
+        // AddParcelTracking : Adds tracking details about a specific parcel.
+        [HttpGet]
+        public ActionResult AddParcelTracking(int order)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddParcelTracking(Tracking tracking)
+        {
+            View();
+            _trackingService.addTracking(tracking);
+            return RedirectToAction("Index", "Staff");
+        }
+
         // CreateParcel : Creates a new parcel.
         [HttpGet]
         public ActionResult CreateParcel()
@@ -50,21 +65,6 @@ namespace ABCLogistics.Controllers
         {
             _parcelService.addParcel(parcel);
             return RedirectToAction("Index");
-        }
-
-        // AddParcelTracking : Adds tracking details about a specific parcel.
-        [HttpGet]
-        public ActionResult AddParcelTracking(int order)
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult AddParcelTracking(Tracking tracking)
-        {
-            View();
-            _trackingService.addTracking(tracking);
-            return RedirectToAction("Index", "Staff");
         }
 
         // READ =====================================================================
@@ -123,27 +123,7 @@ namespace ABCLogistics.Controllers
             }
         }
 
-        // EditTracking : Method for editting specific details about a tracking record.
-        [HttpGet]
-        public ActionResult EditTracking(int id)
-        {
-            Tracking record = _trackingService.getTracking(id);
-            return View(record);
-        }
 
-        [HttpPost]
-        public ActionResult EditTracking(Tracking tracking)
-        {
-            try
-            {
-                _trackingService.editTracking(tracking);
-                return RedirectToAction("Parcels", "Order");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         // DELETE ===================================================================
         // DeleteParcel
@@ -162,29 +142,6 @@ namespace ABCLogistics.Controllers
                 Parcel _parcel = _parcelService.getParcel(id);
                 _parcelService.deleteParcel(_parcel);
                 return RedirectToAction("Index", "Staff");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // DeleteTracking
-        [HttpGet]
-        public ActionResult DeleteTracking(int id)
-        {
-            Tracking tracking = _trackingService.getTracking(id);
-            return View(tracking);
-        }
-
-        [HttpPost]
-        public ActionResult DeleteTracking(Tracking tracking, int id)
-        {
-            try
-            {
-                Tracking _tracking = _trackingService.getTracking(id);
-                _trackingService.deleteTracking(_tracking);
-                return RedirectToAction("Parcels", "Order");
             }
             catch
             {
