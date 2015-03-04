@@ -34,9 +34,9 @@ namespace ABCLogistics.Services.Service
         }
 
         // getOrderTrackings : Returns IList of Tracking of a specific order.
-        public IList<Tracking> getOrderTrackings(int order)
+        public IList<Tracking> getOrderTrackings(int id)
         {
-            return _trackingDAO.getOrderTrackings(order);
+            return _trackingDAO.getOrderTrackings(id);
         }
 
         // getTracking

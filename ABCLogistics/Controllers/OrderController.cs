@@ -36,7 +36,7 @@ namespace ABCLogistics.Controllers
 
         // AddTracking
         [HttpGet] [Authorize(Roles="Customer")]
-        public ActionResult AddTracking(int order)
+        public ActionResult AddTracking(int id)
         {
             return View();
         }

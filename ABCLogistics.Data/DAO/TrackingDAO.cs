@@ -40,12 +40,12 @@ namespace ABCLogistics.Data.DAO
         }
 
         // getOrderTrackings : Returns IList of Tracking of a specific order.
-        public IList<Tracking> getOrderTrackings(int order)
+        public IList<Tracking> getOrderTrackings(int id)
         {
             IQueryable<Tracking> _trackings;
             _trackings = from tracking
                          in _context.Trackings
-                         where tracking.Order == order
+                         where tracking.Order == id
                          select tracking;
             return _trackings.ToList<Tracking>();
         }

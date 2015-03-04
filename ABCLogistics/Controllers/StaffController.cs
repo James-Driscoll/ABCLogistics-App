@@ -27,7 +27,7 @@ namespace ABCLogistics.Controllers
         // CREATE ===================================================================
         // AddParcelTracking : Adds tracking details about a specific parcel.
         [HttpGet]
-        public ActionResult AddParcelTracking(int order)
+        public ActionResult AddParcelTracking(int id)
         {
             return View();
         }
@@ -83,9 +83,9 @@ namespace ABCLogistics.Controllers
         }
 
         // TrackOrder : Returns IList of Tracking records of a specific order. (getOrderTrackings)
-        public ActionResult TrackOrder(int order)
+        public ActionResult TrackOrder(int id)
         {
-            return View(_trackingService.getOrderTrackings(order));
+            return View(_trackingService.getOrderTrackings(id));
         }
 
         // UPDATE ===================================================================

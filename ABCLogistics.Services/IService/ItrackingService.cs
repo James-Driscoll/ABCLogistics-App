@@ -20,7 +20,7 @@ namespace ABCLogistics.Services.IService
         IList<Tracking> getTrackings();
 
         // getOrderTrackings : Returns IList of Tracking of a specific order.
-        IList<Tracking> getOrderTrackings(int order);
+        IList<Tracking> getOrderTrackings(int id);
 
         // getTracking
         Tracking getTracking(int id);
