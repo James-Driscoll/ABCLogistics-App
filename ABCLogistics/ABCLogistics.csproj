@@ -263,7 +263,7 @@
     <Content Include="Views\Staff\TrackOrder.cshtml" />
     <Content Include="Views\Staff\EditParcel.cshtml" />
     <Content Include="Views\Staff\DeleteParcel.cshtml" />
-    <Content Include="Views\Admin\ControlPanel.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\RoleAdmin\Index.cshtml" />
     <Content Include="Views\RoleAdmin\EditRole.cshtml" />
     <Content Include="Views\RoleAdmin\DeleteRole.cshtml" />

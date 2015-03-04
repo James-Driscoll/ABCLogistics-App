@@ -29,7 +29,7 @@ namespace ABCLogistics.Controllers
 
         // READ ===============================================================
         // ControlPanel : Returns view containing list of Admin related functions.
-        public ActionResult ControlPanel()
+        public ActionResult Index()
         {
             return View();
         }
@@ -107,7 +107,7 @@ namespace ABCLogistics.Controllers
 
             //return View();
 
-            return RedirectToAction("ControlPanel");
+            return RedirectToAction("Index");
         }
 
         // DELETE =============================================================

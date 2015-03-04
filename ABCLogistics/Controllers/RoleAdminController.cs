@@ -17,11 +17,14 @@ namespace ABCLogistics.Controllers
     {
 
         private ABCLogistics.Models.ApplicationDbContext _context;
+        
+        
 
         // CONSTRUCTOR ========================================================
         public RoleAdminController()
         {
             _context = new ABCLogistics.Models.ApplicationDbContext();
+            
         }
 
         // CREATE =============================================================
@@ -37,8 +40,7 @@ namespace ABCLogistics.Controllers
         {
             try
             {
-                _context.Roles.Add(
-                    new IdentityRole() { Name = collection["RoleName"] });
+                _context.Roles.Add(new IdentityRole() { Name = collection["RoleName"] });
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
