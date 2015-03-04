@@ -162,6 +162,30 @@ namespace ABCLogistics.Controllers
             return RedirectToAction("ControlPanel");
         }
 
+        // DELETE =============================================================
+        [HttpGet]
+        public ActionResult DeleteRole(string id)
+        {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_context));
+            var role = roleManager.FindById(id);
+            return View(role);
+        }
+        [HttpPost]
+        public ActionResult DeleteRole(IdentityRole role, string id)
+        {
+            try
+            {
+                var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_context));
+                var _role = roleManager.FindById(id);
+                roleManager.Delete(_role);
+                return RedirectToAction("Roles");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
     }
 
 }
