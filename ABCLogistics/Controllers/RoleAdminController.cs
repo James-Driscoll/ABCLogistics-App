@@ -40,7 +40,7 @@ namespace ABCLogistics.Controllers
                 _context.Roles.Add(
                     new IdentityRole() { Name = collection["RoleName"] });
                 _context.SaveChanges();
-                return RedirectToAction("Roles");
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -50,7 +50,7 @@ namespace ABCLogistics.Controllers
 
         // READ ===============================================================
         // Roles : Returns list of system roles.
-        public ActionResult Roles()
+        public ActionResult Index()
         {
             return View(_context.Roles.ToList());
         }
@@ -72,7 +72,7 @@ namespace ABCLogistics.Controllers
             {
                 _context.Entry(role).State = System.Data.Entity.EntityState.Modified;
                 _context.SaveChanges();
-                return RedirectToAction("Roles");
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -97,7 +97,7 @@ namespace ABCLogistics.Controllers
                 var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_context));
                 var _role = roleManager.FindById(id);
                 roleManager.Delete(_role);
-                return RedirectToAction("Roles");
+                return RedirectToAction("Index");
             }
             catch
             {
