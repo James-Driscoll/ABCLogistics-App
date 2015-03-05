@@ -13,7 +13,7 @@ namespace ABCLogistics.Services.IService
 
         // CREATE ===================================================================
         // addParcel
-        void addParcel(Parcel parcel);
+        void addParcel(ABCLogistics.Data.BEANS.OrderBEAN orderBEAN);
 
         // READ =====================================================================
         // getParcels : Returns IList of all parcels of type Parcel.

@@ -22,22 +22,35 @@ namespace ABCLogistics.Data.DAO
 
         // CREATE ====================================================================
         // addParcel : Method to add a new Parcel to the database.
-        public void addParcel(Parcel parcel)
+        public void addParcel(OrderBEAN orderBEAN)
         {
+            // find the ID of the matching branch name.
+            IQueryable<Branch> _branch;
+            _branch = from branch
+                      in _context.Branches
+                      where branch.Name == orderBEAN.BranchName
+                      select branch;
+            
+            // Save parts of the orderBEAN into a new parcel object.
+            Parcel parcel = new Parcel
+            {
+                Id = orderBEAN.Id,
+                Weight = orderBEAN.Weight,
+                Insured = orderBEAN.Insured,
+                DateOrdered = orderBEAN.DateOrdered,
+                DateDelivered = orderBEAN.DateDelivered,
+                Status = orderBEAN.Status,
+                Customer = orderBEAN.Customer,
+                Branch = _branch.ToList().First().Id
+            };
+
+            // Save the parcel object.
             _context.Parcels.Add(parcel);
             _context.SaveChanges();
         }
 
         // READ ======================================================================
         // getParcels : Returns IList of all parcels of type Parcel.
-        //public IList<Parcel> getParcels()
-        //{
-        //    IQueryable<Parcel> _parcels;
-        //    _parcels = from Parcel
-        //               in _context.Parcels
-        //               select Parcel;
-        //    return _parcels.ToList<Parcel>();
-        //}
         public IList<OrderBEAN> getParcels()
         {
             IQueryable<OrderBEAN> _orderBEANs;

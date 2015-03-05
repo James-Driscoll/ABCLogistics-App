@@ -19,18 +19,17 @@ namespace ABCLogistics.Controllers
         [HttpGet] [Authorize(Roles="Customer")]
         public ActionResult AddParcel()
         {
-
             return View();
         }
 
         [HttpPost] [Authorize(Roles="Customer")]
-        public ActionResult AddParcel(Parcel parcel)
+        public ActionResult AddParcel(ABCLogistics.Data.BEANS.OrderBEAN orderBEAN)
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             ApplicationUser user = userManager.FindByIdAsync(User.Identity.GetUserId()).Result;
             var currentUser = userManager.FindById(User.Identity.GetUserId());
-            parcel.Customer = currentUser.Id;
-            _parcelService.addParcel(parcel);
+            orderBEAN.Customer = currentUser.Id;
+            _parcelService.addParcel(orderBEAN);
             return RedirectToAction("Parcels", "Order");
         }
 

@@ -23,9 +23,9 @@ namespace ABCLogistics.Services.Service
 
         // CREATE ===================================================================
         // addParcel
-        public void addParcel(Parcel parcel)
+        public void addParcel(ABCLogistics.Data.BEANS.OrderBEAN orderBEAN)
         {
-            _parcelDAO.addParcel(parcel);
+            _parcelDAO.addParcel(orderBEAN);
         }
 
         // READ =====================================================================

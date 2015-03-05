@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ABCLogistics.Data.Parcel>
+﻿@model IEnumerable<ABCLogistics.Data.BEANS.OrderBEAN>
 
 @{
     ViewBag.Title = "All Parcels";
@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            Order Number
+            Order #
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Weight)
@@ -24,7 +24,16 @@
             @Html.DisplayNameFor(model => model.DateOrdered)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.DateDelivered)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Customer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BranchName)
         </th>
         <th>
             Track
@@ -49,7 +58,16 @@
             @Html.DisplayFor(modelItem => item.DateOrdered)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.DateDelivered)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
             <a href="@Url.Action("CustomerDetails", new { customer = item.Customer })"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BranchName)
         </td>
         <td>
             <a href="@Url.Action("TrackOrder", new { id = item.Id })"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></a>

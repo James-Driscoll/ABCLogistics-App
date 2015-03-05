@@ -61,9 +61,9 @@ namespace ABCLogistics.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateParcel(Parcel parcel)
+        public ActionResult CreateParcel(ABCLogistics.Data.BEANS.OrderBEAN orderBEAN)
         {
-            _parcelService.addParcel(parcel);
+            _parcelService.addParcel(orderBEAN);
             return RedirectToAction("Index");
         }
 

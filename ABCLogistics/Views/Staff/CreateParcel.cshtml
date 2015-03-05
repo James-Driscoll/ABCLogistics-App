@@ -1,5 +1,4 @@
-﻿@model ABCLogistics.Data.Parcel
-
+﻿@model ABCLogistics.Data.BEANS.OrderBEAN
 @{
     ViewBag.Title = "Create Parcel";
 }
@@ -41,10 +40,34 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.DateDelivered, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateDelivered, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DateDelivered, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Status, ViewData["orderStatuses"] as SelectList)
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.Customer, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.Customer, (List<SelectListItem>)ViewBag.userList)
                 @Html.ValidationMessageFor(model => model.Customer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BranchName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BranchName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BranchName, "", new { @class = "text-danger" })
             </div>
         </div>
 
