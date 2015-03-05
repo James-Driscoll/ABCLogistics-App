@@ -18,6 +18,8 @@ namespace ABCLogistics.Data
         public int Weight { get; set; }
         public bool Insured { get; set; }
         public System.DateTime DateOrdered { get; set; }
+        public Nullable<System.DateTime> DateDelivered { get; set; }
+        public string Status { get; set; }
         public string Customer { get; set; }
         public int Branch { get; set; }
     }

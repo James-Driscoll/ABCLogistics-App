@@ -14,7 +14,10 @@ namespace ABCLogistics.Data.BEANS
         public int Weight { get; set; }
         public Boolean Insured { get; set; }
         public DateTime DateOrdered { get; set; }
-        public string CustomerName { get; set; }
+        public Nullable<DateTime> DateDelivered { get; set; }
+        public string Status { get; set; }
+        public string BranchName { get; set; }
+        public string Customer { get; set; }
 
         // CONSTRUCTOR ===============================================================
         public OrderBEAN() { }

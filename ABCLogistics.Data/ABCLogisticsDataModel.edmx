@@ -25,6 +25,8 @@
           <Property Name="Weight" Type="int" Nullable="false" />
           <Property Name="Insured" Type="bit" Nullable="false" />
           <Property Name="DateOrdered" Type="date" Nullable="false" />
+          <Property Name="DateDelivered" Type="date" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Customer" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Branch" Type="int" Nullable="false" />
         </EntityType>
@@ -104,6 +106,8 @@
           <Property Name="Weight" Type="Int32" Nullable="false" />
           <Property Name="Insured" Type="Boolean" Nullable="false" />
           <Property Name="DateOrdered" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateDelivered" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Customer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Branch" Type="Int32" Nullable="false" />
         </EntityType>
@@ -153,6 +157,8 @@
               <MappingFragment StoreEntitySet="Parcel">
                 <ScalarProperty Name="Branch" ColumnName="Branch" />
                 <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DateDelivered" ColumnName="DateDelivered" />
                 <ScalarProperty Name="DateOrdered" ColumnName="DateOrdered" />
                 <ScalarProperty Name="Insured" ColumnName="Insured" />
                 <ScalarProperty Name="Weight" ColumnName="Weight" />

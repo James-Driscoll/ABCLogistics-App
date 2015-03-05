@@ -30,13 +30,13 @@ namespace ABCLogistics.Services.Service
 
         // READ =====================================================================
         // getParcels : Returns IList of all parcels of type Parcel.
-        public IList<Parcel> getParcels()
+        public IList<ABCLogistics.Data.BEANS.OrderBEAN> getParcels()
         {
             return _parcelDAO.getParcels();
         }
         
         // getCustomerParcels : Returns IList of OrderBEAN parcels for a specific customer.
-        public IList<Parcel> getCustomerParcels(string customer)
+        public IList<ABCLogistics.Data.BEANS.OrderBEAN> getCustomerParcels(string customer)
         {
             return _parcelDAO.getCustomerParcels(customer);
         }

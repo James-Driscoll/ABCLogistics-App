@@ -30,23 +30,54 @@ namespace ABCLogistics.Data.DAO
 
         // READ ======================================================================
         // getParcels : Returns IList of all parcels of type Parcel.
-        public IList<Parcel> getParcels()
+        //public IList<Parcel> getParcels()
+        //{
+        //    IQueryable<Parcel> _parcels;
+        //    _parcels = from Parcel
+        //               in _context.Parcels
+        //               select Parcel;
+        //    return _parcels.ToList<Parcel>();
+        //}
+        public IList<OrderBEAN> getParcels()
         {
-            IQueryable<Parcel> _parcels;
-            _parcels = from Parcel
-                       in _context.Parcels
-                       select Parcel;
-            return _parcels.ToList<Parcel>();
+            IQueryable<OrderBEAN> _orderBEANs;
+            _orderBEANs = from parcels in _context.Parcels
+                          from branches in _context.Branches
+                          where parcels.Branch == branches.Id
+                          select new OrderBEAN
+                          {
+                              Id = parcels.Id,
+                              Weight = parcels.Weight,
+                              Insured = parcels.Insured,
+                              DateOrdered = parcels.DateOrdered,
+                              DateDelivered = parcels.DateDelivered,
+                              Status = parcels.Status,
+                              Customer = parcels.Customer,
+                              BranchName = branches.Name
+                          };
+            return _orderBEANs.ToList<OrderBEAN>();
         }
 
         // getCustomerParcels : Returns IList of OrderBEAN parcels for a specific customer.
-        public IList<Parcel> getCustomerParcels(string customer)
+        public IList<OrderBEAN> getCustomerParcels(string customer)
         {
-            IQueryable<Parcel> _parcels;
-            _parcels = from parcel in _context.Parcels
-                       where parcel.Customer == customer
-                       select parcel;
-            return _parcels.ToList<Parcel>();
+            IQueryable<OrderBEAN> _orderBEANs;
+            _orderBEANs = from parcels in _context.Parcels
+                          from branches in _context.Branches
+                          where parcels.Customer == customer
+                          where parcels.Branch == branches.Id
+                          select new OrderBEAN
+                          {
+                              Id = parcels.Id,
+                              Weight = parcels.Weight,
+                              Insured = parcels.Insured,
+                              DateOrdered = parcels.DateOrdered,
+                              DateDelivered = parcels.DateDelivered,
+                              Status = parcels.Status,
+                              Customer = parcels.Customer,
+                              BranchName = branches.Name
+                          };
+            return _orderBEANs.ToList<OrderBEAN>();
         }
 
         // getParcel
@@ -69,7 +100,9 @@ namespace ABCLogistics.Data.DAO
                              where rec.Id == parcel.Id
                              select rec).ToList<Parcel>().First();
             record.Customer = parcel.Customer;
+            record.Branch = parcel.Branch;
             record.DateOrdered = parcel.DateOrdered;
+            record.DateDelivered = parcel.DateDelivered;
             record.Weight = parcel.Weight;
             record.Insured = parcel.Insured;
             _context.SaveChanges();

@@ -33,10 +33,9 @@ namespace ABCLogistics.Controllers
             _trackingService = new ABCLogistics.Services.Service.TrackingService();
             _userService = new ABCLogistics.Services.Service.UserService();
 
-            var statusList = new SelectList(new[] 
+            var trackingStatuses = new SelectList(new[] 
             {
-                new { ID = "Order Received", Name = "Order Received" },
-                new { ID = "Order Processing", Name = "Order Processing" },
+                new { ID = "Processing", Name = "Processing" },
                 new { ID = "Dispatched", Name = "Dispatched" },
                 new { ID = "Being Shipped", Name = "Being Shipped" },
                 new { ID = "Shipped", Name = "Shipped" },
@@ -46,7 +45,17 @@ namespace ABCLogistics.Controllers
                 new { ID = "Cancelled", Name = "Cancelled" }
             },
             "ID", "Name", 1);
-            ViewData["statusList"] = statusList;
+            ViewData["trackingStatuses"] = trackingStatuses;
+
+            var orderStatuses = new SelectList(new[] 
+            {
+                new { ID = "Received", Name = "Received" },
+                new { ID = "Processing", Name = "Processing" },
+                new { ID = "Complete", Name = "Complete" }
+            },
+            "ID", "Name", 1);
+            ViewData["orderStatuses"] = orderStatuses;
+
         }
 
     }
