@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="ABCLogisticsData.Tracking" Width="1.5" PointX="3" PointY="3" />
         <EntityTypeShape EntityType="ABCLogisticsData.User" Width="1.5" PointX="6.5" PointY="3" />
         <EntityTypeShape EntityType="ABCLogisticsData.Parcel" Width="1.5" PointX="4.75" PointY="3" />
+        <EntityTypeShape EntityType="ABCLogisticsData.Branch" Width="1.5" PointX="8.25" PointY="3" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

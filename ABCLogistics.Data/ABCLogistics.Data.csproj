@@ -64,9 +64,14 @@
       <DependentUpon>ABCLogisticsDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="BEANS\OrderBEAN.cs" />
+    <Compile Include="Branch.cs">
+      <DependentUpon>ABCLogisticsDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\BranchDAO.cs" />
     <Compile Include="DAO\ParcelDAO.cs" />
     <Compile Include="DAO\TrackingDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
+    <Compile Include="IDAO\IBranchDAO.cs" />
     <Compile Include="IDAO\IParcelDAO.cs" />
     <Compile Include="IDAO\ITrackingDAO.cs" />
     <Compile Include="IDAO\IUserDAO.cs" />

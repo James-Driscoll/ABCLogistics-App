@@ -115,7 +115,7 @@ namespace ABCLogistics.Controllers
             try
             {
                 _parcelService.editParcel(parcel);
-                return RedirectToAction("Parcels", "Order");
+                return RedirectToAction("Index", "Staff");
             }
             catch
             {

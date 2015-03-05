@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            Order Number
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Weight)
         </th>
         <th>
@@ -26,11 +29,16 @@
         <th>
             Track
         </th>
-        <th></th>
+        <th>
+            Actions
+        </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Weight)
         </td>
