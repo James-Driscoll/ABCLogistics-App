@@ -69,28 +69,6 @@ namespace ABCLogistics.Controllers
         }
 
         // UPDATE ===================================================================
-        // EditParcel
-        [HttpGet]
-        public ActionResult EditParcel(int id)
-        {
-            Parcel record = _parcelService.getParcel(id);
-            return View(record);
-        }
-
-        [HttpPost]
-        public ActionResult EditParcel(Parcel parcel)
-        {
-            try
-            {
-                _parcelService.editParcel(parcel);
-                return RedirectToAction("Parcels", "Order");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
         // EditTracking
         [HttpGet]
         public ActionResult EditTracking(int id)
@@ -114,29 +92,6 @@ namespace ABCLogistics.Controllers
         }
 
         // DELETE ===================================================================
-        // DeleteParcel
-        [HttpGet]
-        public ActionResult DeleteParcel(int id)
-        {
-            Parcel parcel = _parcelService.getParcel(id);
-            return View(parcel);
-        }
-
-        [HttpPost]
-        public ActionResult DeleteParcel(Parcel parcel, int id)
-        {
-            try
-            {
-                Parcel _parcel = _parcelService.getParcel(id);
-                _parcelService.deleteParcel(_parcel);
-                return RedirectToAction("Parcels", "Order");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
         // DeleteTracking
         [HttpGet]
         public ActionResult DeleteTracking(int id)

@@ -105,16 +105,31 @@ namespace ABCLogistics.Controllers
                     });
             }
             ViewBag.userList = userList;
+            
             Parcel record = _parcelService.getParcel(id);
-            return View(record);
+            Branch _branch = _branchService.getBranch(record.Branch);
+
+            ABCLogistics.Data.BEANS.OrderBEAN orderBEAN = new Data.BEANS.OrderBEAN()
+            {
+                Id = record.Id,
+                Weight = record.Weight,
+                Insured = record.Insured,
+                DateOrdered = record.DateOrdered,
+                DateDelivered = record.DateDelivered,
+                Status = record.Status,
+                Customer = record.Customer,
+                BranchName = _branch.Name
+            };
+
+            return View(orderBEAN);
         }
 
         [HttpPost]
-        public ActionResult EditParcel(Parcel parcel)
+        public ActionResult EditParcel(ABCLogistics.Data.BEANS.OrderBEAN orderBEAN)
         {
             try
             {
-                _parcelService.editParcel(parcel);
+                _parcelService.editParcel(orderBEAN);
                 return RedirectToAction("Index", "Staff");
             }
             catch
@@ -123,24 +138,46 @@ namespace ABCLogistics.Controllers
             }
         }
 
-
-
         // DELETE ===================================================================
         // DeleteParcel
         [HttpGet]
         public ActionResult DeleteParcel(int id)
         {
-            Parcel parcel = _parcelService.getParcel(id);
-            return View(parcel);
+            Parcel record = _parcelService.getParcel(id);
+            Branch _branch = _branchService.getBranch(record.Branch);
+
+            ABCLogistics.Data.BEANS.OrderBEAN orderBEAN = new Data.BEANS.OrderBEAN()
+            {
+                Id = record.Id,
+                Weight = record.Weight,
+                Insured = record.Insured,
+                DateOrdered = record.DateOrdered,
+                DateDelivered = record.DateDelivered,
+                Status = record.Status,
+                Customer = record.Customer,
+                BranchName = _branch.Name
+            };
+
+            return View(orderBEAN);
         }
 
         [HttpPost]
-        public ActionResult DeleteParcel(Parcel parcel, int id)
+        public ActionResult DeleteParcel(ABCLogistics.Data.BEANS.OrderBEAN orderBEAN, int id)
         {
             try
             {
-                Parcel _parcel = _parcelService.getParcel(id);
-                _parcelService.deleteParcel(_parcel);
+                Parcel parcel = _parcelService.getParcel(id);
+                Branch branch = _branchService.getBranch(parcel.Branch);
+                orderBEAN.Id = parcel.Id;
+                orderBEAN.Weight = parcel.Weight;
+                orderBEAN.Insured = parcel.Insured;
+                orderBEAN.DateOrdered = parcel.DateOrdered;
+                orderBEAN.DateDelivered = parcel.DateDelivered;
+                orderBEAN.Status = parcel.Status;
+                orderBEAN.Customer = parcel.Customer;
+                orderBEAN.BranchName = branch.Name;
+                _parcelService.deleteParcel(orderBEAN);
+               
                 return RedirectToAction("Index", "Staff");
             }
             catch

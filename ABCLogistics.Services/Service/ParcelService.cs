@@ -49,16 +49,16 @@ namespace ABCLogistics.Services.Service
 
         // UPDATE ===================================================================
         // editParcel
-        public void editParcel(Parcel parcel)
+        public void editParcel(ABCLogistics.Data.BEANS.OrderBEAN orderBEAN)
         {
-            _parcelDAO.editParcel(parcel);
+            _parcelDAO.editParcel(orderBEAN);
         }
 
         // DELETE ===================================================================
         // deleteParcel
-        public void deleteParcel(Parcel parcel)
+        public void deleteParcel(ABCLogistics.Data.BEANS.OrderBEAN orderBEAN)
         {
-            _parcelDAO.deleteParcel(parcel);
+            _parcelDAO.deleteParcel(orderBEAN);
         }
 
     }

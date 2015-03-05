@@ -26,11 +26,11 @@ namespace ABCLogistics.Data.IDAO
 
         // UPDATE ====================================================================
         // editParcel
-        void editParcel(Parcel parcel);
+        void editParcel(ABCLogistics.Data.BEANS.OrderBEAN orderBEAN);
 
         // DELETE ====================================================================
         // deleteParcel
-        void deleteParcel(Parcel parcel);
+        void deleteParcel(ABCLogistics.Data.BEANS.OrderBEAN orderBEAN);
 
     }
 

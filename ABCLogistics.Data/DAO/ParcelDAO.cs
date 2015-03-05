@@ -106,25 +106,57 @@ namespace ABCLogistics.Data.DAO
 
         // UPDATE ====================================================================
         // editParcel
-        public void editParcel(Parcel parcel)
+        public void editParcel(OrderBEAN orderBEAN)
         {
-            Parcel record = (from rec
+            // find the ID of the matching branch name.
+            IQueryable<Branch> _branch;
+            _branch = from branch
+                      in _context.Branches
+                      where branch.Name == orderBEAN.BranchName
+                      select branch;
+
+            // create a new parcel object and assign order fields to it with branch id.
+            Parcel record = (from parcel
                              in _context.Parcels
-                             where rec.Id == parcel.Id
-                             select rec).ToList<Parcel>().First();
-            record.Customer = parcel.Customer;
-            record.Branch = parcel.Branch;
-            record.DateOrdered = parcel.DateOrdered;
-            record.DateDelivered = parcel.DateDelivered;
-            record.Weight = parcel.Weight;
-            record.Insured = parcel.Insured;
+                             where parcel.Id == orderBEAN.Id
+                             select parcel).ToList<Parcel>().First();
+            record.Customer = orderBEAN.Customer;
+            record.Branch = _branch.ToList().First().Id;
+            record.DateOrdered = orderBEAN.DateOrdered;
+            record.DateDelivered = orderBEAN.DateDelivered;
+            record.Weight = orderBEAN.Weight;
+            record.Insured = orderBEAN.Insured;
+            
+            // save changes.
             _context.SaveChanges();
         }
 
         // DELETE ====================================================================
         // deleteParcel
-        public void deleteParcel(Parcel parcel)
+        public void deleteParcel(OrderBEAN orderBEAN)
         {
+            // find the ID of the matching branch name.
+            IQueryable<Branch> _branch;
+            _branch = from branch
+                      in _context.Branches
+                      where branch.Name == orderBEAN.BranchName
+                      select branch;
+
+
+            // construct new parcel with the id of the orderBEAN branch.
+            Parcel parcel = new Parcel
+            {
+                Id = orderBEAN.Id,
+                Weight = orderBEAN.Weight,
+                Insured = orderBEAN.Insured,
+                DateOrdered = orderBEAN.DateOrdered,
+                DateDelivered = orderBEAN.DateDelivered,
+                Status = orderBEAN.Status,
+                Customer = orderBEAN.Customer,
+                Branch = _branch.ToList().First().Id
+            };
+
+            // remove the branch and save changes.
             _context.Parcels.Remove(parcel);
             _context.SaveChanges();
         }
