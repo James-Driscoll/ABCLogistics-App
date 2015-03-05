@@ -271,11 +271,15 @@
     <Content Include="Views\RoleAdmin\Delete.cshtml" />
     <Content Include="Views\TrackingAdmin\Edit.cshtml" />
     <Content Include="Views\TrackingAdmin\Delete.cshtml" />
+    <Content Include="Views\BranchAdmin\Create.cshtml" />
+    <Content Include="Views\BranchAdmin\Index.cshtml" />
+    <Content Include="Views\BranchAdmin\Edit.cshtml" />
+    <Content Include="Views\BranchAdmin\Delete.cshtml" />
+    <Content Include="Views\BranchAdmin\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Application\" />
-    <Folder Include="Views\BranchAdmin\" />
     <Folder Include="Views\Customer\" />
   </ItemGroup>
   <ItemGroup>

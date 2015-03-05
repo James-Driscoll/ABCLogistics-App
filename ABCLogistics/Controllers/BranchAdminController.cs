@@ -34,8 +34,8 @@ namespace ABCLogistics.Controllers
             return View(_branchService.getBranches());
         }
 
-        // Branch : Returns one Branch.
-        public ActionResult Branch(int id)
+        // Details : Returns one Branch.
+        public ActionResult Details(int id)
         {
             return View(_branchService.getBranch(id));
         }
