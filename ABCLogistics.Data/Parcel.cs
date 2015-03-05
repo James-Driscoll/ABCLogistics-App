@@ -19,5 +19,6 @@ namespace ABCLogistics.Data
         public bool Insured { get; set; }
         public System.DateTime DateOrdered { get; set; }
         public string Customer { get; set; }
+        public int Branch { get; set; }
     }
 }

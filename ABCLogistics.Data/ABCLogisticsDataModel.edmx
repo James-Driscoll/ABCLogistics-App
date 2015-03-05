@@ -26,6 +26,7 @@
           <Property Name="Insured" Type="bit" Nullable="false" />
           <Property Name="DateOrdered" Type="date" Nullable="false" />
           <Property Name="Customer" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Branch" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Tracking">
           <Key>
@@ -60,8 +61,8 @@
         <EntityContainer Name="ABCLogisticsDataEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Trackings" EntityType="ABCLogisticsData.Tracking" />
           <EntitySet Name="Users" EntityType="ABCLogisticsData.User" />
-          <EntitySet Name="Parcels" EntityType="ABCLogisticsData.Parcel" />
           <EntitySet Name="Branches" EntityType="ABCLogisticsData.Branch" />
+          <EntitySet Name="Parcels" EntityType="ABCLogisticsData.Parcel" />
         </EntityContainer>
         <EntityType Name="Tracking">
           <Key>
@@ -83,16 +84,6 @@
           <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SystemID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Parcel">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Weight" Type="Int32" Nullable="false" />
-          <Property Name="Insured" Type="Boolean" Nullable="false" />
-          <Property Name="DateOrdered" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Customer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Branch">
           <Key>
             <PropertyRef Name="Id" />
@@ -104,6 +95,17 @@
           <Property Name="Town" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="County" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Postcode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Parcel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Weight" Type="Int32" Nullable="false" />
+          <Property Name="Insured" Type="Boolean" Nullable="false" />
+          <Property Name="DateOrdered" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Customer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Branch" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -133,17 +135,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Parcels">
-            <EntityTypeMapping TypeName="ABCLogisticsData.Parcel">
-              <MappingFragment StoreEntitySet="Parcel">
-                <ScalarProperty Name="Customer" ColumnName="Customer" />
-                <ScalarProperty Name="DateOrdered" ColumnName="DateOrdered" />
-                <ScalarProperty Name="Insured" ColumnName="Insured" />
-                <ScalarProperty Name="Weight" ColumnName="Weight" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Branches">
             <EntityTypeMapping TypeName="ABCLogisticsData.Branch">
               <MappingFragment StoreEntitySet="Branch">
@@ -153,6 +144,18 @@
                 <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
                 <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parcels">
+            <EntityTypeMapping TypeName="ABCLogisticsData.Parcel">
+              <MappingFragment StoreEntitySet="Parcel">
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="DateOrdered" ColumnName="DateOrdered" />
+                <ScalarProperty Name="Insured" ColumnName="Insured" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
