@@ -21,6 +21,7 @@ namespace ABCLogistics.Controllers
         public ABCLogistics.Services.Service.TrackingService _trackingService;
         public ABCLogistics.Services.Service.UserService _userService;
         public ABCLogistics.Services.Service.BranchService _branchService;
+        private ABCLogistics.Models.ApplicationDbContext _usercontext;
 
         // Declare dictionaries.
         //public Dictionary<int, string> _branchDictionary;
@@ -33,6 +34,7 @@ namespace ABCLogistics.Controllers
             _trackingService = new ABCLogistics.Services.Service.TrackingService();
             _userService = new ABCLogistics.Services.Service.UserService();
             _branchService = new ABCLogistics.Services.Service.BranchService();
+            _usercontext = new ABCLogistics.Models.ApplicationDbContext();
 
             // Construct list of Tracking statuses.
             var trackingStatuses = new SelectList(new[] 
@@ -71,6 +73,19 @@ namespace ABCLogistics.Controllers
                     });
             }
             ViewBag.branchList = branchList;
+
+            // Construct list of User names.
+            List<SelectListItem> userList = new List<SelectListItem>();
+            foreach (var item in _usercontext.Users.ToList())
+            {
+                userList.Add(
+                    new SelectListItem()
+                    {
+                        Text = item.FirstName + " " + item.LastName + " | " + item.UserName,
+                        Value = item.Id.ToString()
+                    });
+            }
+            ViewBag.userList = userList;
 
         }
 

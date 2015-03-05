@@ -44,19 +44,6 @@ namespace ABCLogistics.Controllers
         [HttpGet]
         public ActionResult CreateParcel()
         {
-            // populates user list for the view drop down menu.
-            List<SelectListItem> userList = new List<SelectListItem>();
-            foreach (var item in _context.Users.ToList())
-            {
-                userList.Add(
-                    new SelectListItem()
-                    {
-                        Text = item.FirstName + " " + item.LastName + " | " + item.UserName,
-                        Value = item.Id.ToString()
-                        //Selected = (item.UserName == (selectedUser) ? true : false)
-                    });
-            }
-            ViewBag.userList = userList;
             return View();
         }
 
