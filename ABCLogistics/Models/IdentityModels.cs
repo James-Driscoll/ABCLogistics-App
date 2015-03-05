@@ -43,6 +43,8 @@ namespace ABCLogistics.Models
 
         //public System.Data.Entity.DbSet<ABCLogistics.Models.ApplicationUser> ApplicationUsers { get; set; }
 
+        //public System.Data.Entity.DbSet<ABCLogistics.Models.ApplicationUser> ApplicationUsers { get; set; }
+
         //public System.Data.Entity.DbSet<ABCLogistics.Data.Parcel> Parcels { get; set; }
     }
 }
