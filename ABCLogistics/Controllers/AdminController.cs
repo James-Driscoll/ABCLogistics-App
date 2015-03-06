@@ -95,19 +95,17 @@ namespace ABCLogistics.Controllers
         {
             ApplicationUser user = _context.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(_context));
-            userManager.AddToRole(user.Id, RoleName);
+            var idResult = userManager.AddToRole(user.Id, RoleName);
 
             // prepopulat roles for the view dropdown
-            //var roleList = _context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
-            //ViewBag.Roles = roleList;
+            var roleList = _context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+            ViewBag.Roles = roleList;
 
             // populate users for the view dropdown
-            //var userList = _context.Users.OrderBy(u => u.UserName).ToList().Select(uu => new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
-            //ViewBag.Users = userList;
+            var userList = _context.Users.OrderBy(u => u.UserName).ToList().Select(uu => new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
+            ViewBag.Users = userList;
 
-            //return View();
-
-            return RedirectToAction("Index");
+            return View();
         }
 
         // DELETE =============================================================

@@ -19,7 +19,6 @@ namespace ABCLogistics.Controllers
         // Declare services
         public ABCLogistics.Services.Service.ParcelService _parcelService;
         public ABCLogistics.Services.Service.TrackingService _trackingService;
-        public ABCLogistics.Services.Service.UserService _userService;
         public ABCLogistics.Services.Service.BranchService _branchService;
         private ABCLogistics.Models.ApplicationDbContext _usercontext;
 
@@ -32,7 +31,6 @@ namespace ABCLogistics.Controllers
             // Construct services.
             _parcelService = new ABCLogistics.Services.Service.ParcelService();
             _trackingService = new ABCLogistics.Services.Service.TrackingService();
-            _userService = new ABCLogistics.Services.Service.UserService();
             _branchService = new ABCLogistics.Services.Service.BranchService();
             _usercontext = new ABCLogistics.Models.ApplicationDbContext();
 

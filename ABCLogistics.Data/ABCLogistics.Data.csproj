@@ -70,19 +70,14 @@
     <Compile Include="DAO\BranchDAO.cs" />
     <Compile Include="DAO\ParcelDAO.cs" />
     <Compile Include="DAO\TrackingDAO.cs" />
-    <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="IDAO\IBranchDAO.cs" />
     <Compile Include="IDAO\IParcelDAO.cs" />
     <Compile Include="IDAO\ITrackingDAO.cs" />
-    <Compile Include="IDAO\IUserDAO.cs" />
     <Compile Include="Parcel.cs">
       <DependentUpon>ABCLogisticsDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tracking.cs">
-      <DependentUpon>ABCLogisticsDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
       <DependentUpon>ABCLogisticsDataModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
