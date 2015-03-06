@@ -34,7 +34,7 @@ namespace ABCLogistics.Controllers
             return View();
         }
         
-        // Users : Retunrns list of users.
+        // Users : Returns list of users.
         public ActionResult Users()
         {
             return View(_context.Users.ToList());
