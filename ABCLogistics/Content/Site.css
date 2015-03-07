@@ -22,9 +22,6 @@ select,
 textarea {
     max-width: 280px;
 }
-body {
-    padding-top: 50px;
-}
 .table td, .table th {
    text-align: center;   
 }

@@ -33,9 +33,10 @@ namespace ABCLogistics.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddParcelTracking(Tracking tracking)
+        public ActionResult AddParcelTracking(Tracking tracking, int id)
         {
             View();
+            tracking.Order = id;
             _trackingService.addTracking(tracking);
             return RedirectToAction("Index", "Staff");
         }

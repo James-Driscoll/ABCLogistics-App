@@ -14,10 +14,18 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-md-12 well text-center">
-            <h1>Orders</h1>
-            <p>This is the list of all stored orders.</p>
-            @Html.ActionLink("See your Parcels", "Parcels", "Order")
+        <h3>Role Based User Instructions</h3>
+        <div class="col-md-4">
+            <h4 class="text-center">Customer</h4>
+            <p class="text-justify">The customer is required to register and log i to the site before any actions can be accessed. The customer can view parcels by using the link in the navigation bar. The customer can add parcels that will be delivered to themselves. The customer can browse all parcels that have been added to their delivery list and track an individual parcel. The tracking represents a list of updates that the ABCLogistics staff members have added in order to keep the customer updated with logistical progress.</p>
+        </div>
+        <div class="col-md-4">
+            <h4 class="text-center">Staff</h4>
+            <p class="text-justify">The staff member is required to register and log in to the site before any actions can be accessed. The website administrator is required to give staff member the system role permissions of Staff. Staff members can view all the parcels in the database, they also have permission to create, edit and delete all parcels. A staff member is responsible for adding tracking information to a parcel which will be visible to customer associated with the order. Staff members can also update or delete tracking information.</p>
+        </div>
+        <div class="col-md-4">
+            <h4 class="text-center">Admin</h4>
+            <p class="text-justify">The website admin is required to register and log in to the site before any actions can be accessed. The admin does not have any permission limitations. Admins can view all of the register users of the site. Admins can also view and increase user permissions of the site. The admin can create, read, update and delete all system roles and also branches that are available for parcels to be dropped to.</p>
         </div>
     </div>
 
@@ -32,73 +40,21 @@
     </div>
 
     <div class="row">
-        <h3>User Instructions</h3>
-        <p>ORDERS is the central table which uses foreign keys to link to other tables containing further record details. To add a new ORDER the linked records will need to exist in the ADDRESS, USER and ITEM tables.</p>
-    </div>
-
-    <div class="row">
-        <h3>Known Issues</h3>
-        <ul>
-            <li>When using a hyperlink in a list view (getOrders or getUsers) the site will fail if the record does not already exist.</li>
-            <li>Input validation for values of date datatypes is using the American date format.</li>
-        </ul>
-    </div>
-
-    <div class="row">
         <h3>Next Steps &amp; Improvements</h3>
         <ul>
-            <li>One order can only contain one item. Ideally, one order should be able to contain many different items.</li>
-            <li>Currently there is no inheritance between the controllers. Ideally: Customer < --- Order < --- Admin</li>
-            <li>Currently a user can only have two addresses (delivery address and billing address). Ideally, more addresses should be available.</li>
-            <li>When creating a new Order, all of the foreign key fields should show drop dowm menus of available users, addresses or items.</li>
+            <li>One order can only contain one item. Ideally, one order should be able to contain many different items. This would require an independant Item table.</li>
+            <li>A customer can only store one delivery address. Idealy the customer should be able to store a list of addresses and select which address a particular order should be delivered to.</li>
+            <li>The admin cannot remove roles from a user, only add them. Idealy the admin should be able to use the interface to remove system roles from a user.</li>
+            <li>Users cannot update their profile data after registration. Ideally this should always be available to be updated.</li>
         </ul>
     </div>
 
-    <div class="row text-center">
-        <h3>Controller Actions Overview</h3>
-        <div class="col-md-4">
-            <h4>CustomerController</h4>
-            <ul class="list-group">
-                <li class="list-group-item">addAddress</li>
-                <li class="list-group-item">getAddresses</li>
-                <li class="list-group-item">getAddress</li>
-                <li class="list-group-item">editAddress</li>
-                <li class="list-group-item">deleteAddress</li>
-                <li class="list-group-item">getItem</li>
-                <li class="list-group-item">getItems</li>
-                <li class="list-group-item">getTrackings</li>
-                <li class="list-group-item">getTracking</li>
-                <li class="list-group-item">getOrder</li>
-                <li class="list-group-item">getOrders</li>
-                <li class="list-group-item">getUser</li>
-            </ul>
-        </div>
-
-        <div class="col-md-4">
-            <h4>OrderController</h4>
-            <ul class="list-group">
-                <li class="list-group-item">addItem</li>
-                <li class="list-group-item">editItem</li>
-                <li class="list-group-item">deleteItem</li>
-                <li class="list-group-item">addTracking</li>
-                <li class="list-group-item">editTracking</li>
-                <li class="list-group-item">deleteTracking</li>
-                <li class="list-group-item">addOrder</li>
-                <li class="list-group-item">editorders</li>
-                <li class="list-group-item">deleteOrders</li>
-                <li class="list-group-item">addUser</li>
-            </ul>
-        </div>
-
-        <div class="col-md-4">
-            <h4>AdminController</h4>
-            <ul class="list-group">
-                <li class="list-group-item">getUsers</li>
-                <li class="list-group-item">editUser</li>
-                <li class="list-group-item">deleteUser</li>
-            </ul>
-        </div>
-
+    <div class="row">
+        <h3>References</h3>
+        <ul>
+            <li><strong>(Quintans, no date): </strong>Quintans, D. (no date) How to make clean URLs � Desi Quintans.com. Available at: http://www.desiquintans.com/cleanurls (Accessed: 4 March 2015).</li>
+            <li><strong>(‘Semantic URL’, 2014): </strong>‘Semantic URL’ (2014) Wikipedia. Wikipedia. Available at: http://en.wikipedia.org/wiki/Semantic_URL (Accessed: 4 March 2015).</li>
+        </ul>
     </div>
 
 </div>

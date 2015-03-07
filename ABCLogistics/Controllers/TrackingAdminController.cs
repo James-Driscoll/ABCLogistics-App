@@ -30,7 +30,7 @@ namespace ABCLogistics.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditTracking(Tracking tracking)
+        public ActionResult Edit(Tracking tracking)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace ABCLogistics.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteTracking(Tracking tracking, int id)
+        public ActionResult Delete(Tracking tracking, int id)
         {
             try
             {
