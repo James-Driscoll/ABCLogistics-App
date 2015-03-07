@@ -11,7 +11,7 @@ using ABCLogistics.Models;
 namespace ABCLogistics.Controllers
 {
     
-    //[Authorize(Roles="Staff")]
+    [Authorize(Roles = "Staff")]
     public class StaffController : ApplicationController
     {
 

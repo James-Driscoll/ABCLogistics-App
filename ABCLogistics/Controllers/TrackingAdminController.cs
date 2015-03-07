@@ -7,7 +7,8 @@ using ABCLogistics.Data;
 
 namespace ABCLogistics.Controllers
 {
-    
+
+    [Authorize(Roles = "Staff, Admin")]
     public class TrackingAdminController : ApplicationController
     {
         

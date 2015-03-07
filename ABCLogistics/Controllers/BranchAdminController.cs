@@ -7,7 +7,8 @@ using ABCLogistics.Data;
 
 namespace ABCLogistics.Controllers
 {
-    
+
+    [Authorize(Roles = "Admin")]
     public class BranchAdminController : ApplicationController
     {
 

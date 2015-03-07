@@ -16,13 +16,13 @@ namespace ABCLogistics.Controllers
 
         // CREATE ===================================================================
         // AddParcel
-        [HttpGet] [Authorize(Roles="Customer")]
+        [HttpGet] [Authorize(Roles="Customer, Staff, Admin")]
         public ActionResult AddParcel()
         {
             return View();
         }
 
-        [HttpPost] [Authorize(Roles="Customer")]
+        [HttpPost] [Authorize(Roles = "Customer, Staff, Admin")]
         public ActionResult AddParcel(ABCLogistics.Data.BEANS.OrderBEAN orderBEAN)
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
@@ -34,13 +34,13 @@ namespace ABCLogistics.Controllers
         }
 
         // AddTracking
-        [HttpGet] [Authorize(Roles="Customer")]
+        [HttpGet] [Authorize(Roles="Staff, Admin")]
         public ActionResult AddTracking(int id)
         {
             return View();
         }
 
-        [HttpPost] [Authorize(Roles="Customer")]
+        [HttpPost] [Authorize(Roles="Staff, Admin")]
         public ActionResult AddTracking(Tracking tracking)
         {
             View();
@@ -50,7 +50,7 @@ namespace ABCLogistics.Controllers
 
         // READ =====================================================================
         // Parcels
-        [HttpGet] [Authorize(Roles="Customer")]
+        [HttpGet] [Authorize(Roles="Customer, Staff, Admin")]
         public ActionResult Parcels()
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
@@ -62,7 +62,7 @@ namespace ABCLogistics.Controllers
         }
        
         // Track : Returns IList of Tracking of a specific order. (getOrderTrackings)
-        [Authorize(Roles="Customer")]
+        [Authorize(Roles="Customer, Staff, Admin")]
         public ActionResult Track(int id)
         {
             return View(_trackingService.getOrderTrackings(id));
@@ -70,14 +70,14 @@ namespace ABCLogistics.Controllers
 
         // UPDATE ===================================================================
         // EditTracking
-        [HttpGet]
+        [HttpGet] [Authorize(Roles = "Staff, Admin")]
         public ActionResult EditTracking(int id)
         {
             Tracking record = _trackingService.getTracking(id);
             return View(record);
         }
 
-        [HttpPost]
+        [HttpPost] [Authorize(Roles = "Staff, Admin")]
         public ActionResult EditTracking(Tracking tracking)
         {
             try
@@ -93,14 +93,14 @@ namespace ABCLogistics.Controllers
 
         // DELETE ===================================================================
         // DeleteTracking
-        [HttpGet]
+        [HttpGet] [Authorize(Roles = "Staff, Admin")]
         public ActionResult DeleteTracking(int id)
         {
             Tracking tracking = _trackingService.getTracking(id);
             return View(tracking);
         }
 
-        [HttpPost]
+        [HttpPost] [Authorize(Roles = "Staff, Admin")]
         public ActionResult DeleteTracking(Tracking tracking, int id)
         {
             try
